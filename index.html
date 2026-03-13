@@ -3,35 +3,95 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>WhoGoes — Event Intent Data With Proof</title>
-  <meta name="description" content="Find people who publicly posted about attending any trade show, exhibition, or event. Browse real data free — pay only when you want the full list.">
-  <script src="https://cdn.tailwindcss.com"></script>
+  <title>WhoGoes — Trade Show & Event Attendee Data With Proof</title>
+  <meta name="description" content="Find verified trade show, conference & event attendees with LinkedIn proof. Browse 1,200+ events free. Get names, emails & companies — pay only for contacts you want.">
+  <link rel="canonical" href="https://whogoes.co/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://whogoes.co/">
+  <meta property="og:title" content="WhoGoes — Trade Show & Event Attendee Data With Proof">
+  <meta property="og:description" content="Find verified trade show, conference & event attendees with LinkedIn proof. Browse 1,200+ events free. Pay only for contacts you want.">
+  <meta property="og:site_name" content="WhoGoes">
+
+  <!-- Twitter / LinkedIn -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="WhoGoes — Trade Show & Event Attendee Data With Proof">
+  <meta name="twitter:description" content="Find verified trade show, conference & event attendees with LinkedIn proof. Browse 1,200+ events free.">
+
+  <!-- FAQPage Schema Markup -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How do credits work?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "1 credit = 1 contact unlock. You get 20 free credits on signup. Buy more anytime. Choose how many contacts to unlock per event using a simple slider. Best contacts (email-verified) are unlocked first."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What does the free preview include?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Every event page shows 5 real contacts for free, with no sign-up required. You can see names, titles, companies, and LinkedIn post URLs to verify data quality before creating an account."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How many contacts are available per event?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Varies by event size — shown on each event page. Ranges from a few hundred to 5,000+. Active events keep growing as new people post about attending."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I request an event not in the catalog?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes! Submit a request with the event name and your details — we add new events within 48 hours."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is this GDPR and CCPA compliant?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. We only collect publicly posted LinkedIn content. Full compliance details in our Privacy Policy."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How is WhoGoes different from Bombora or 6sense?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "They track anonymous web browsing at the account level — no contacts, no proof. WhoGoes provides individual contacts who publicly declared intent, with the source LinkedIn post as proof, starting completely free."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <!-- Organization Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "WhoGoes",
+    "url": "https://whogoes.co",
+    "description": "Trade show and event attendee data with LinkedIn proof."
+  }
+  </script>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: {
-            sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
-          },
-          colors: {
-            brand: {
-              50: '#ecfdf5',
-              100: '#d1fae5',
-              200: '#a7f3d0',
-              300: '#6ee7b7',
-              400: '#34d399',
-              500: '#10b981',
-              600: '#059669',
-              700: '#047857',
-            },
-          },
-        },
-      },
-    }
-  </script>
+  <link rel="stylesheet" href="dist/output.css">
   <style>
     * { box-sizing: border-box; }
     body {
@@ -206,15 +266,15 @@
 
         <!-- Headline with rotating text -->
         <h1 class="text-5xl md:text-6xl tracking-tighter text-zinc-900 font-semibold leading-[1.1] max-w-xl">
-          <span class="rotating-text inline-block h-[1.15em] overflow-hidden align-bottom" style="min-width: 280px;">
-            <span id="rotating-word" class="block text-emerald-600">Event</span>
+          <span class="rotating-text inline-block h-[1.15em] overflow-hidden align-bottom" style="min-width: 320px;">
+            <span id="rotating-word" class="block text-emerald-600">Trade Show</span>
           </span>
-          <br>intent data. With proof.
+          <br>attendee data. With proof.
         </h1>
 
         <!-- Subheadline -->
         <p class="w-full max-w-md font-medium text-lg leading-6 text-zinc-500">
-          Find people who publicly posted about attending any event. Browse real data free — pay only for the contacts you want.
+          Find people who publicly posted about attending any trade show, conference, or event. Browse real attendee data free — pay only for the contacts you want.
         </p>
 
         <!-- CTAs -->
@@ -367,7 +427,7 @@
                 </svg>
               </div>
               <span class="text-sm font-medium text-zinc-900">Unlock contacts with credits</span>
-              <span class="text-xs text-zinc-400">1 credit = 1 contact &middot; 20 free credits on signup</span>
+              <span class="text-xs text-zinc-400">1 credit = 1 contact &middot; 20 free credits on signup &middot; From $0.05/contact</span>
             </div>
           </div>
         </div>
@@ -394,7 +454,7 @@
           </div>
           <h3 class="text-lg leading-6 font-medium text-center text-zinc-900">
             Pay as you go.
-            <span class="text-zinc-500">$1 gets you 20 credits. No contracts, no minimums.</span>
+            <span class="text-zinc-500">Start at $10 for 100 credits. No contracts, no minimums.</span>
           </h3>
         </div>
         <div class="flex flex-col items-center justify-start gap-3 max-w-xs md:max-w-none">
@@ -653,10 +713,10 @@
             <div class="flex flex-col gap-2 items-center text-center">
               <span class="text-xs px-2.5 py-1 rounded-full font-medium bg-emerald-50 text-emerald-600 mb-2">Pay as you go</span>
               <div class="flex items-baseline gap-1">
-                <span class="text-5xl font-semibold text-zinc-900">$1</span>
+                <span class="text-5xl font-semibold text-zinc-900">$0.05</span>
               </div>
-              <p class="text-lg text-zinc-500 font-medium mt-1">= 20 credits</p>
-              <p class="text-sm text-zinc-400 mt-1">1 credit = 1 contact unlock</p>
+              <p class="text-lg text-zinc-500 font-medium mt-1">per contact</p>
+              <p class="text-sm text-zinc-400 mt-1">Buy in credit packs &middot; 1 credit = 1 contact</p>
             </div>
 
             <div class="w-full h-px bg-zinc-100"></div>
@@ -667,16 +727,32 @@
                 <span class="text-sm font-semibold text-emerald-600">20 credits</span>
               </div>
               <div class="flex items-center justify-between px-4 py-3 rounded-lg bg-zinc-50">
-                <span class="text-sm text-zinc-500">$1</span>
-                <span class="text-sm font-semibold text-zinc-900">20 credits</span>
+                <div class="flex flex-col">
+                  <span class="text-sm font-semibold text-zinc-900">$10</span>
+                </div>
+                <div class="flex flex-col items-end">
+                  <span class="text-sm font-semibold text-zinc-900">100 credits</span>
+                  <span class="text-xs text-zinc-400">$0.10 / contact</span>
+                </div>
               </div>
               <div class="flex items-center justify-between px-4 py-3 rounded-lg bg-zinc-50">
-                <span class="text-sm text-zinc-500">$5</span>
-                <span class="text-sm font-semibold text-zinc-900">100 credits</span>
+                <div class="flex flex-col">
+                  <span class="text-sm font-semibold text-zinc-900">$50</span>
+                </div>
+                <div class="flex flex-col items-end">
+                  <span class="text-sm font-semibold text-zinc-900">750 credits</span>
+                  <span class="text-xs text-emerald-600">$0.067 / contact &middot; Save 33%</span>
+                </div>
               </div>
-              <div class="flex items-center justify-between px-4 py-3 rounded-lg bg-zinc-50">
-                <span class="text-sm text-zinc-500">$20</span>
-                <span class="text-sm font-semibold text-zinc-900">400 credits</span>
+              <div class="flex items-center justify-between px-4 py-3 rounded-lg bg-emerald-50/50 border border-emerald-100">
+                <div class="flex flex-col">
+                  <span class="text-sm font-semibold text-emerald-700">$100</span>
+                  <span class="text-xs text-emerald-600">Best value</span>
+                </div>
+                <div class="flex flex-col items-end">
+                  <span class="text-sm font-semibold text-emerald-700">2,000 credits</span>
+                  <span class="text-xs text-emerald-600">$0.05 / contact &middot; Save 50%</span>
+                </div>
               </div>
             </div>
 
@@ -720,7 +796,7 @@
 
         <!-- Comparison callout -->
         <p class="text-center text-sm text-zinc-400 mt-10 max-w-lg mx-auto">
-          Competitors like Bombora ($25K/yr) and 6sense ($50K/yr) require annual contracts. WhoGoes starts at $0 with 20 free credits.
+          Competitors like Bombora ($25K/yr) and 6sense ($50K/yr) require annual contracts. WhoGoes starts free with 20 credits — paid packs from $10.
         </p>
       </div>
     </section>
@@ -815,7 +891,7 @@
               How do credits work?
               <svg width="16" height="16" fill="none" viewBox="0 0 16 16" class="text-zinc-400 transition-transform group-open:rotate-45 shrink-0 ml-4"><path d="M8 3V13M3 8H13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
             </summary>
-            <p class="mt-3 text-sm text-zinc-500 leading-6">1 credit = 1 contact unlock. You get 20 free credits on signup. Buy more anytime at $1 = 20 credits. Choose how many contacts to unlock per event using a simple slider. Best contacts (email-verified) are unlocked first.</p>
+            <p class="mt-3 text-sm text-zinc-500 leading-6">1 credit = 1 contact unlock. You get 20 free credits on signup. Buy more anytime — packs start at $10 for 100 credits, up to $100 for 2,000 credits. Choose how many contacts to unlock per event using a simple slider. Best contacts (email-verified) are unlocked first.</p>
           </details>
 
           <details class="group py-5">
@@ -896,8 +972,8 @@
           </div>
           <div class="flex flex-col gap-3">
             <span class="text-xs font-medium text-zinc-400 uppercase tracking-wider">Company</span>
-            <a href="mailto:hello@whogoes.com" class="text-sm text-zinc-500 hover:text-zinc-900 transition-colors">Contact</a>
-            <a href="https://linkedin.com" class="text-sm text-zinc-500 hover:text-zinc-900 transition-colors">LinkedIn</a>
+            <a href="mailto:hello@whogoes.co" class="text-sm text-zinc-500 hover:text-zinc-900 transition-colors">Contact</a>
+            <a href="https://www.linkedin.com/company/whogoes" target="_blank" rel="noopener" class="text-sm text-zinc-500 hover:text-zinc-900 transition-colors">LinkedIn</a>
           </div>
           <div class="flex flex-col gap-3">
             <span class="text-xs font-medium text-zinc-400 uppercase tracking-wider">Legal</span>
@@ -958,7 +1034,7 @@
 
   <!-- Rotating text JS -->
   <script>
-    const words = ['Event', 'Exhibition', 'Trade show', 'Conference'];
+    const words = ['Trade Show', 'Conference', 'Exhibition', 'Event'];
     let currentIndex = 0;
     const el = document.getElementById('rotating-word');
 
