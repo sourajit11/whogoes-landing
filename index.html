@@ -129,18 +129,15 @@
       transition: none;
     }
 
-    /* Hero gradient - emerald tones */
+    /* Hero gradient - subtle emerald fade */
     .hero-gradient {
       background: linear-gradient(
         180deg,
-        #a7f3d0 0%,
-        #6ee7b7 10%,
-        #34d399 25%,
-        #10b981 35%,
-        #6ee7b7 50%,
-        #a7f3d0 65%,
-        #d1fae5 78%,
-        #ecfdf5 90%,
+        #ecfdf5 0%,
+        #d1fae5 15%,
+        #a7f3d0 35%,
+        #d1fae5 60%,
+        #ecfdf5 80%,
         #ffffff 100%
       );
     }
@@ -202,8 +199,8 @@
         <a href="#faq" class="px-2 py-1 text-sm font-medium text-zinc-500 hover:text-zinc-900 transition-colors">FAQ</a>
       </nav>
       <!-- Auth -->
-      <a href="https://app.whogoes.co/login" class="text-sm font-medium text-zinc-500 hover:text-zinc-900 transition-colors px-2">Login</a>
-      <a href="https://app.whogoes.co/register">
+      <a target="_blank" rel="noopener" href="https://app.whogoes.co/login" class="text-sm font-medium text-zinc-500 hover:text-zinc-900 transition-colors px-2">Login</a>
+      <a target="_blank" rel="noopener" href="https://app.whogoes.co/register">
         <button class="flex items-center justify-center px-4 h-8 text-sm font-medium text-white bg-emerald-600 hover:bg-emerald-500 transition-all pill cursor-pointer active:scale-[0.98]">
           Register
         </button>
@@ -221,8 +218,8 @@
         <span class="text-sm font-semibold text-zinc-900 tracking-tight">WhoGoes</span>
       </a>
       <div class="flex items-center gap-2">
-        <a href="https://app.whogoes.co/login" class="text-sm font-medium text-zinc-500 hover:text-zinc-900 transition-colors">Login</a>
-        <a href="https://app.whogoes.co/register">
+        <a target="_blank" rel="noopener" href="https://app.whogoes.co/login" class="text-sm font-medium text-zinc-500 hover:text-zinc-900 transition-colors">Login</a>
+        <a target="_blank" rel="noopener" href="https://app.whogoes.co/register">
           <button class="flex items-center justify-center px-3 h-8 text-sm font-medium text-white bg-emerald-600 hover:bg-emerald-500 transition-all pill cursor-pointer">
             Register
           </button>
@@ -280,7 +277,7 @@
 
         <!-- CTAs -->
         <div class="flex flex-col md:flex-row items-center gap-4 mt-2">
-          <a href="https://app.whogoes.co/dashboard/events">
+          <a target="_blank" rel="noopener" href="https://app.whogoes.co/dashboard/events">
             <button class="flex items-center justify-center px-6 h-11 text-base font-medium text-white bg-emerald-600 hover:bg-emerald-500 transition-all pill cursor-pointer active:scale-[0.98] w-[280px] md:w-auto">
               Browse Events Free
             </button>
@@ -309,14 +306,14 @@
       </div>
 
       <!-- Trust Logos -->
-      <div class="max-w-3xl mx-auto px-5 mt-4">
-        <p class="text-xs font-medium text-zinc-300 uppercase tracking-wider text-center mb-4">Trusted by teams at</p>
-        <div class="flex items-center justify-center gap-8 md:gap-12 flex-wrap">
-          <span class="text-sm font-semibold text-zinc-300 tracking-wide">Salesforce</span>
-          <span class="text-sm font-semibold text-zinc-300 tracking-wide">HubSpot</span>
-          <span class="text-sm font-semibold text-zinc-300 tracking-wide">Gartner</span>
-          <span class="text-sm font-semibold text-zinc-300 tracking-wide">Outreach</span>
-          <span class="text-sm font-semibold text-zinc-300 tracking-wide">Drift</span>
+      <div class="max-w-3xl mx-auto px-5 mt-8">
+        <p class="text-xs font-medium text-zinc-400 uppercase tracking-wider text-center mb-5">Trusted by teams at</p>
+        <div class="flex items-center justify-center gap-10 md:gap-14 flex-wrap">
+          <span class="text-base font-bold text-zinc-400 tracking-wide">Salesforce</span>
+          <span class="text-base font-bold text-zinc-400 tracking-wide">HubSpot</span>
+          <span class="text-base font-bold text-zinc-400 tracking-wide">Gartner</span>
+          <span class="text-base font-bold text-zinc-400 tracking-wide">Outreach</span>
+          <span class="text-base font-bold text-zinc-400 tracking-wide">Drift</span>
         </div>
       </div>
 
@@ -440,7 +437,7 @@
                 </svg>
               </div>
               <span class="text-sm font-medium text-zinc-900">Unlock contacts with credits</span>
-              <span class="text-xs text-zinc-400">1 credit = 1 contact &middot; 20 free credits on signup &middot; From $0.05/contact</span>
+              <span class="text-xs text-zinc-400">1 credit = 1 contact &middot; 20 free credits on signup &middot; From $0.075/contact</span>
             </div>
           </div>
         </div>
@@ -456,7 +453,7 @@
           </div>
           <h3 class="text-lg leading-6 font-medium text-center text-zinc-900">
             Verified intent.
-            <span class="text-zinc-500">Every contact includes a LinkedIn post proving they're attending.</span>
+            <span class="text-zinc-500">Every contact comes with a public LinkedIn post as proof of attendance.</span>
           </h3>
         </div>
         <div class="flex flex-col items-center justify-start gap-3 max-w-xs md:max-w-none">
@@ -467,7 +464,7 @@
           </div>
           <h3 class="text-lg leading-6 font-medium text-center text-zinc-900">
             Pay as you go.
-            <span class="text-zinc-500">Start at $10 for 100 credits. No contracts, no minimums.</span>
+            <span class="text-zinc-500">Start at $29 for 200 credits. No contracts, no minimums.</span>
           </h3>
         </div>
         <div class="flex flex-col items-center justify-start gap-3 max-w-xs md:max-w-none">
@@ -550,7 +547,7 @@
         </div>
 
         <div class="flex justify-center">
-          <a href="https://app.whogoes.co/dashboard/events">
+          <a target="_blank" rel="noopener" href="https://app.whogoes.co/dashboard/events">
             <button class="flex items-center justify-center px-6 h-11 text-sm font-medium text-white bg-emerald-600 hover:bg-emerald-500 transition-all pill cursor-pointer active:scale-[0.98]">
               Browse All Events
             </button>
@@ -798,7 +795,7 @@
               </li>
             </ul>
 
-            <a href="https://app.whogoes.co/register" class="block">
+            <a target="_blank" rel="noopener" href="https://app.whogoes.co/register" class="block">
               <button class="w-full flex items-center justify-center px-6 h-12 text-base font-medium text-white bg-emerald-600 hover:bg-emerald-500 transition-all pill cursor-pointer active:scale-[0.98]">
                 Start Free — 20 Credits
               </button>
@@ -956,7 +953,7 @@
         <h2 class="text-3xl md:text-4xl tracking-tighter text-zinc-900 leading-tight font-medium max-w-lg">
           Your next event is coming. See who's already posted about going.
         </h2>
-        <a href="https://app.whogoes.co/dashboard/events">
+        <a target="_blank" rel="noopener" href="https://app.whogoes.co/dashboard/events">
           <button class="flex items-center justify-center px-8 h-12 text-base font-medium text-white bg-emerald-600 hover:bg-emerald-500 transition-all pill cursor-pointer active:scale-[0.98]">
             Browse Events Free
           </button>
@@ -971,10 +968,10 @@
         <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mb-12">
           <div class="flex flex-col gap-3">
             <span class="text-xs font-medium text-zinc-400 uppercase tracking-wider">Product</span>
-            <a href="https://app.whogoes.co/dashboard/events" class="text-sm text-zinc-500 hover:text-zinc-900 transition-colors">Browse Events</a>
+            <a target="_blank" rel="noopener" href="https://app.whogoes.co/dashboard/events" class="text-sm text-zinc-500 hover:text-zinc-900 transition-colors">Browse Events</a>
             <a href="#pricing" class="text-sm text-zinc-500 hover:text-zinc-900 transition-colors">Pricing</a>
-            <a href="https://app.whogoes.co/login" class="text-sm text-zinc-500 hover:text-zinc-900 transition-colors">Login</a>
-            <a href="https://app.whogoes.co/register" class="text-sm text-zinc-500 hover:text-zinc-900 transition-colors">Register</a>
+            <a target="_blank" rel="noopener" href="https://app.whogoes.co/login" class="text-sm text-zinc-500 hover:text-zinc-900 transition-colors">Login</a>
+            <a target="_blank" rel="noopener" href="https://app.whogoes.co/register" class="text-sm text-zinc-500 hover:text-zinc-900 transition-colors">Register</a>
           </div>
           <div class="flex flex-col gap-3">
             <span class="text-xs font-medium text-zinc-400 uppercase tracking-wider">Events</span>
@@ -990,9 +987,9 @@
           </div>
           <div class="flex flex-col gap-3">
             <span class="text-xs font-medium text-zinc-400 uppercase tracking-wider">Legal</span>
-            <a href="/privacy.html" class="text-sm text-zinc-500 hover:text-zinc-900 transition-colors">Privacy Policy</a>
-            <a href="/terms.html" class="text-sm text-zinc-500 hover:text-zinc-900 transition-colors">Terms of Service</a>
-            <a href="/gdpr.html" class="text-sm text-zinc-500 hover:text-zinc-900 transition-colors">GDPR Compliance</a>
+            <a target="_blank" rel="noopener" href="/privacy.html" class="text-sm text-zinc-500 hover:text-zinc-900 transition-colors">Privacy Policy</a>
+            <a target="_blank" rel="noopener" href="/terms.html" class="text-sm text-zinc-500 hover:text-zinc-900 transition-colors">Terms of Service</a>
+            <a target="_blank" rel="noopener" href="/gdpr.html" class="text-sm text-zinc-500 hover:text-zinc-900 transition-colors">GDPR Compliance</a>
           </div>
         </div>
 
@@ -1001,7 +998,7 @@
             <div class="flex h-5 w-5 items-center justify-center rounded bg-emerald-500">
               <span class="text-[10px] font-bold text-white">W</span>
             </div>
-            <span class="text-sm text-zinc-400">&copy; 2026 WhoGoes. Event intent data with proof.</span>
+            <span class="text-sm text-zinc-400">&copy; 2026 WhoGoes. Outreach-ready event attendee lists.</span>
           </div>
         </div>
       </div>
