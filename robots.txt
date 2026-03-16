@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /dist/
 
 Sitemap: https://whogoes.co/sitemap.xml
