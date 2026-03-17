@@ -46,7 +46,7 @@
         "name": "How do credits work?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "1 credit = 1 contact unlock. You get 20 free credits on signup. Buy more anytime. Choose how many contacts to unlock per event using a simple slider. Best contacts (email-verified) are unlocked first."
+          "text": "1 credit = 1 contact unlock. You get 20 free credits on signup. Buy more anytime — packs start at $29 for 200 credits, up to $149 for 2,000 credits. Choose how many contacts to unlock per event using a simple slider. Best contacts (email-verified) are unlocked first."
         }
       },
       {
@@ -986,7 +986,7 @@
               How do credits work?
               <svg width="16" height="16" fill="none" viewBox="0 0 16 16" class="text-zinc-400 transition-transform group-open:rotate-45 shrink-0 ml-4"><path d="M8 3V13M3 8H13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
             </summary>
-            <p class="mt-3 text-sm text-zinc-500 leading-6">1 credit = 1 contact unlock. You get 20 free credits on signup. Buy more anytime — packs start at $10 for 100 credits, up to $100 for 2,000 credits. Choose how many contacts to unlock per event using a simple slider. Best contacts (email-verified) are unlocked first.</p>
+            <p class="mt-3 text-sm text-zinc-500 leading-6">1 credit = 1 contact unlock. You get 20 free credits on signup. Buy more anytime — packs start at $29 for 200 credits, up to $149 for 2,000 credits. Choose how many contacts to unlock per event using a simple slider. Best contacts (email-verified) are unlocked first.</p>
           </details>
 
           <details class="group py-5">
@@ -1060,14 +1060,14 @@
           </div>
           <div class="flex flex-col gap-3">
             <span class="text-xs font-medium text-zinc-400 uppercase tracking-wider">Events</span>
-            <a href="#" class="text-sm text-zinc-500 hover:text-zinc-900 transition-colors">CES 2026</a>
-            <a href="#" class="text-sm text-zinc-500 hover:text-zinc-900 transition-colors">HIMSS 2026</a>
-            <a href="#" class="text-sm text-zinc-500 hover:text-zinc-900 transition-colors">NRF 2026</a>
+            <a target="_blank" rel="noopener" href="https://app.whogoes.co/events/himss-2026" class="text-sm text-zinc-500 hover:text-zinc-900 transition-colors">HIMSS 2026</a>
+            <a target="_blank" rel="noopener" href="https://app.whogoes.co/events/conexpo-2026" class="text-sm text-zinc-500 hover:text-zinc-900 transition-colors">CONEXPO 2026</a>
+            <a target="_blank" rel="noopener" href="https://app.whogoes.co/events/mobile-world-congress-mwc-2026" class="text-sm text-zinc-500 hover:text-zinc-900 transition-colors">MWC 2026</a>
             <a href="#" onclick="event.preventDefault();openRequestModal()" class="text-sm text-zinc-500 hover:text-zinc-900 transition-colors">Request an Event</a>
           </div>
           <div class="flex flex-col gap-3">
             <span class="text-xs font-medium text-zinc-400 uppercase tracking-wider">Company</span>
-            <a href="mailto:hello@whogoes.co" class="text-sm text-zinc-500 hover:text-zinc-900 transition-colors">Contact</a>
+            <a href="#" onclick="event.preventDefault();openContactModal()" class="text-sm text-zinc-500 hover:text-zinc-900 transition-colors">Contact</a>
             <a href="https://www.linkedin.com/company/avrpix/" target="_blank" rel="noopener" class="text-sm text-zinc-500 hover:text-zinc-900 transition-colors">LinkedIn</a>
           </div>
           <div class="flex flex-col gap-3">
@@ -1127,6 +1127,45 @@
     </div>
   </div>
 
+  <!-- Contact Modal -->
+  <div id="contact-modal" class="fixed inset-0 z-[100] hidden items-center justify-center bg-black/40 backdrop-blur-sm" onclick="if(event.target===this)closeContactModal()">
+    <div class="bg-white rounded-2xl shadow-2xl w-full max-w-md mx-4 p-8 animate-fade-in-up">
+      <div class="flex items-center justify-between mb-6">
+        <h3 class="text-xl font-semibold text-zinc-900">Contact Us</h3>
+        <button onclick="closeContactModal()" class="text-zinc-400 hover:text-zinc-900 transition-colors cursor-pointer">
+          <svg width="20" height="20" fill="none" viewBox="0 0 16 16"><path d="M4 4L12 12M12 4L4 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </button>
+      </div>
+      <form id="contact-form" class="flex flex-col gap-4" onsubmit="submitContactForm(event)">
+        <div class="flex flex-col gap-1.5">
+          <label for="contact-name" class="text-sm font-medium text-zinc-700">Your Name</label>
+          <input id="contact-name" type="text" required placeholder="John Doe" class="h-10 px-3 rounded-lg border border-zinc-200 text-sm text-zinc-900 placeholder:text-zinc-400 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent">
+        </div>
+        <div class="flex flex-col gap-1.5">
+          <label for="contact-email" class="text-sm font-medium text-zinc-700">Email Address</label>
+          <input id="contact-email" type="email" required placeholder="john@company.com" class="h-10 px-3 rounded-lg border border-zinc-200 text-sm text-zinc-900 placeholder:text-zinc-400 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent">
+        </div>
+        <div class="flex flex-col gap-1.5">
+          <label for="contact-message" class="text-sm font-medium text-zinc-700">Message</label>
+          <textarea id="contact-message" required rows="4" placeholder="How can we help?" class="px-3 py-2 rounded-lg border border-zinc-200 text-sm text-zinc-900 placeholder:text-zinc-400 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent resize-none"></textarea>
+        </div>
+        <button type="submit" id="contact-submit-btn" class="mt-2 flex items-center justify-center h-11 text-sm font-medium text-white bg-emerald-600 hover:bg-emerald-500 transition-all pill cursor-pointer active:scale-[0.98]">
+          Send Message
+        </button>
+      </form>
+      <div id="contact-success" class="hidden flex-col items-center gap-3 py-4">
+        <div class="w-12 h-12 rounded-full flex items-center justify-center bg-emerald-50">
+          <svg width="24" height="24" fill="none" viewBox="0 0 16 16" class="text-emerald-600"><path d="M4 8L7 11L12 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <p class="text-base font-medium text-zinc-900">Message sent!</p>
+        <p class="text-sm text-zinc-500 text-center">We'll get back to you shortly.</p>
+      </div>
+      <div id="contact-error" class="hidden flex-col items-center gap-3 py-4">
+        <p class="text-sm text-red-500 text-center">Something went wrong. Please email us at hello@whogoes.co</p>
+      </div>
+    </div>
+  </div>
+
   <!-- Rotating text JS -->
   <script>
     const words = ['Trade Show', 'Conference', 'Exhibition', 'Event'];
@@ -1156,6 +1195,9 @@
 
     setInterval(rotateWord, 2500);
 
+    // Web3Forms access key — replace with your key from https://web3forms.com
+    const WEB3FORMS_KEY = '0028d206-ec62-41b9-a36d-be2e628e9761';
+
     // Request Event Modal
     function openRequestModal() {
       const modal = document.getElementById('request-event-modal');
@@ -1170,11 +1212,92 @@
       modal.classList.add('hidden');
       modal.classList.remove('flex');
     }
-    function submitRequestForm(e) {
+    async function submitRequestForm(e) {
       e.preventDefault();
-      document.getElementById('request-event-form').classList.add('hidden');
-      document.getElementById('request-success').classList.remove('hidden');
-      document.getElementById('request-success').classList.add('flex');
+      const eventName = document.getElementById('req-event-name').value;
+      const name = document.getElementById('req-name').value;
+      const email = document.getElementById('req-email').value;
+      const btn = e.target.querySelector('button[type="submit"]');
+      btn.textContent = 'Submitting...';
+      btn.disabled = true;
+      try {
+        const res = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            access_key: WEB3FORMS_KEY,
+            subject: 'New Event Request: ' + eventName,
+            from_name: name,
+            email: email,
+            message: 'Event requested: ' + eventName + '\nName: ' + name + '\nEmail: ' + email
+          })
+        });
+        if (res.ok) {
+          document.getElementById('request-event-form').classList.add('hidden');
+          document.getElementById('request-success').classList.remove('hidden');
+          document.getElementById('request-success').classList.add('flex');
+        } else {
+          alert('Something went wrong. Please email us at hello@whogoes.co');
+        }
+      } catch {
+        alert('Something went wrong. Please email us at hello@whogoes.co');
+      }
+      btn.textContent = 'Submit Request';
+      btn.disabled = false;
+    }
+
+    // Contact Modal
+    function openContactModal() {
+      const modal = document.getElementById('contact-modal');
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+      document.getElementById('contact-form').classList.remove('hidden');
+      document.getElementById('contact-success').classList.add('hidden');
+      document.getElementById('contact-success').classList.remove('flex');
+      document.getElementById('contact-error').classList.add('hidden');
+      document.getElementById('contact-error').classList.remove('flex');
+    }
+    function closeContactModal() {
+      const modal = document.getElementById('contact-modal');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+    }
+    async function submitContactForm(e) {
+      e.preventDefault();
+      const name = document.getElementById('contact-name').value;
+      const email = document.getElementById('contact-email').value;
+      const message = document.getElementById('contact-message').value;
+      const btn = document.getElementById('contact-submit-btn');
+      btn.textContent = 'Sending...';
+      btn.disabled = true;
+      try {
+        const res = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            access_key: WEB3FORMS_KEY,
+            subject: 'Contact from WhoGoes: ' + name,
+            from_name: name,
+            email: email,
+            message: message
+          })
+        });
+        if (res.ok) {
+          document.getElementById('contact-form').classList.add('hidden');
+          document.getElementById('contact-success').classList.remove('hidden');
+          document.getElementById('contact-success').classList.add('flex');
+        } else {
+          document.getElementById('contact-form').classList.add('hidden');
+          document.getElementById('contact-error').classList.remove('hidden');
+          document.getElementById('contact-error').classList.add('flex');
+        }
+      } catch {
+        document.getElementById('contact-form').classList.add('hidden');
+        document.getElementById('contact-error').classList.remove('hidden');
+        document.getElementById('contact-error').classList.add('flex');
+      }
+      btn.textContent = 'Send Message';
+      btn.disabled = false;
     }
   </script>
 </body>
