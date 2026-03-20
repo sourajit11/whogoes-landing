@@ -1,5 +1,10 @@
 User-agent: *
 Allow: /
 Disallow: /dist/
+Disallow: /dashboard/
+Disallow: /api/
+Disallow: /login
+Disallow: /register
 
 Sitemap: https://whogoes.co/sitemap.xml
+Sitemap: https://app.whogoes.co/sitemap.xml
