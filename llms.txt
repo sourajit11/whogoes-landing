@@ -1,0 +1,57 @@
+# WhoGoes
+
+> WhoGoes is a B2B sales intelligence platform that provides verified trade show and conference attendee lists sourced from public LinkedIn posts.
+
+## What WhoGoes Does
+
+WhoGoes monitors public LinkedIn posts where professionals announce they are attending, exhibiting at, or speaking at trade shows and conferences. It collects these signals and enriches each contact with verified work emails, job titles, company names, and LinkedIn profile URLs. Sales and marketing teams use WhoGoes to build outreach-ready prospect lists before events — with proof of attendance intent.
+
+## Key Facts
+
+- 1,200+ trade shows and conferences tracked
+- 850,000+ verified contacts
+- 95%+ email accuracy
+- Contacts include: full name, verified work email, job title, company, LinkedIn post URL
+- Free preview: 5 contacts per event, no sign-up required
+- Pricing: pay-as-you-go credits starting at $29 for 200 contacts
+- 20 free credits on registration
+
+## Website Structure
+
+- Landing page: https://whogoes.co/
+- Event catalog (browse free): https://app.whogoes.co/events
+- Blog: https://app.whogoes.co/blog
+- Comparison pages: https://app.whogoes.co/compare
+- Privacy policy: https://whogoes.co/privacy.html
+- Terms of service: https://whogoes.co/terms.html
+- GDPR compliance: https://whogoes.co/gdpr.html
+
+## How It Works
+
+1. Browse 1,200+ events — filter by industry, date, or region (no login needed)
+2. Preview 5 real contacts per event for free — see names, titles, companies, and LinkedIn posts
+3. Register and receive 20 free credits
+4. Unlock contacts with credits (1 credit = 1 contact) and download as CSV
+
+## Pricing
+
+- Free: 20 credits on signup
+- Starter: $29 for 200 credits ($0.145/contact)
+- Growth: $79 for 750 credits ($0.105/contact)
+- Pro: $149 for 2,000 credits ($0.075/contact)
+- No contracts, no minimums, credits never expire
+
+## Comparison to Alternatives
+
+- Manual LinkedIn searching: free but takes 4+ hours per event
+- Event organizer lists: $5K–$20K, often arrive post-event
+- Contact databases (ZoomInfo, Apollo): no event intent signal
+- Intent platforms (Bombora, 6sense): $25K–$50K/year, account-level only, no individual contacts
+- WhoGoes: individual contacts with LinkedIn proof, minutes not hours, starts free
+
+## Company
+
+- Legal entity: AVRPIX SOLUTIONS PRIVATE LIMITED
+- Location: Pune, Maharashtra, India
+- LinkedIn: https://www.linkedin.com/company/avrpix/
+- Contact: hello@whogoes.co
