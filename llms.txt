@@ -53,5 +53,5 @@ WhoGoes monitors public LinkedIn posts where professionals announce they are att
 
 - Legal entity: AVRPIX SOLUTIONS PRIVATE LIMITED
 - Location: Pune, Maharashtra, India
-- LinkedIn: https://www.linkedin.com/company/avrpix/
+- LinkedIn: https://www.linkedin.com/company/whogoes
 - Contact: hello@whogoes.co
