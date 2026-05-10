@@ -330,6 +330,11 @@
     </div>
   </header>
 
+  <!-- PeerPush Badge (Desktop only, top-right) -->
+  <a href="https://peerpush.net/p/whogoes" target="_blank" rel="noopener" class="hidden md:inline-flex fixed top-8 right-6 z-40 hover:opacity-90 transition-opacity" aria-label="WhoGoes on PeerPush">
+    <img src="https://peerpush.net/p/whogoes/badge.png" alt="WhoGoes on PeerPush" loading="lazy" class="w-[160px] h-auto drop-shadow-md" />
+  </a>
+
   <!-- ==================== HEADER (Mobile) ==================== -->
   <header id="mobile-header" class="fixed top-4 left-4 right-4 z-50 md:hidden bg-white/80 backdrop-blur-xl mobile-header shadow-lg" style="border: 1px solid rgba(0,0,0,0.08);">
     <div class="flex items-center justify-between h-[52px] pl-4 pr-3">
@@ -1125,13 +1130,16 @@
           </div>
         </div>
 
-        <div class="flex items-center justify-between pt-8 border-t border-zinc-100">
+        <div class="flex flex-col-reverse md:flex-row md:items-center md:justify-between gap-6 pt-8 border-t border-zinc-100">
           <div class="flex items-center gap-2">
             <div class="flex h-5 w-5 items-center justify-center rounded bg-emerald-500">
               <span class="text-[10px] font-bold text-white">W</span>
             </div>
             <span class="text-sm text-zinc-400">&copy; 2026 WhoGoes. Outreach-ready event attendee lists.</span>
           </div>
+          <a href="https://peerpush.net/p/whogoes" target="_blank" rel="noopener" class="inline-flex">
+            <img src="https://peerpush.net/p/whogoes/badge.png" alt="WhoGoes on PeerPush" loading="lazy" class="w-[180px] h-auto" />
+          </a>
         </div>
       </div>
     </footer>
