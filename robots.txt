@@ -29,4 +29,3 @@ User-agent: CCBot
 Allow: /
 
 Sitemap: https://whogoes.co/sitemap.xml
-Sitemap: https://app.whogoes.co/sitemap.xml

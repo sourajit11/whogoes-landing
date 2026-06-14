@@ -19,9 +19,9 @@ WhoGoes monitors public LinkedIn posts where professionals announce they are att
 ## Website Structure
 
 - Landing page: https://whogoes.co/
-- Event catalog (browse free): https://app.whogoes.co/events
-- Blog: https://app.whogoes.co/blog
-- Comparison pages: https://app.whogoes.co/compare
+- Event catalog (browse free): https://whogoes.co/events
+- Blog: https://whogoes.co/blog
+- Comparison pages: https://whogoes.co/compare
 - Privacy policy: https://whogoes.co/privacy.html
 - Terms of service: https://whogoes.co/terms.html
 - GDPR compliance: https://whogoes.co/gdpr.html
