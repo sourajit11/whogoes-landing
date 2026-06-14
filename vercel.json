@@ -14,9 +14,13 @@
     }
   ],
   "rewrites": [
+    { "source": "/blog", "destination": "https://app.whogoes.co/blog" },
     { "source": "/blog/:path*", "destination": "https://app.whogoes.co/blog/:path*" },
+    { "source": "/events", "destination": "https://app.whogoes.co/events" },
     { "source": "/events/:path*", "destination": "https://app.whogoes.co/events/:path*" },
+    { "source": "/compare", "destination": "https://app.whogoes.co/compare" },
     { "source": "/compare/:path*", "destination": "https://app.whogoes.co/compare/:path*" },
+    { "source": "/_next/:path*", "destination": "https://app.whogoes.co/_next/:path*" },
     { "source": "/sitemap/:path*", "destination": "https://app.whogoes.co/sitemap/:path*" },
     { "source": "/c46c644d8da9be79f7cf73acfccfb6ac.txt", "destination": "https://app.whogoes.co/c46c644d8da9be79f7cf73acfccfb6ac.txt" }
   ]
