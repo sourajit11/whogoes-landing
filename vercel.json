@@ -12,5 +12,12 @@
       "destination": "/#pricing",
       "permanent": true
     }
+  ],
+  "rewrites": [
+    { "source": "/blog/:path*", "destination": "https://app.whogoes.co/blog/:path*" },
+    { "source": "/events/:path*", "destination": "https://app.whogoes.co/events/:path*" },
+    { "source": "/compare/:path*", "destination": "https://app.whogoes.co/compare/:path*" },
+    { "source": "/sitemap/:path*", "destination": "https://app.whogoes.co/sitemap/:path*" },
+    { "source": "/c46c644d8da9be79f7cf73acfccfb6ac.txt", "destination": "https://app.whogoes.co/c46c644d8da9be79f7cf73acfccfb6ac.txt" }
   ]
 }
