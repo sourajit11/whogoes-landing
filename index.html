@@ -50,7 +50,15 @@
         "name": "How do credits work?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "1 credit = 1 contact unlock. You get 20 free credits on signup. Buy more anytime — packs start at $29 for 200 credits, up to $149 for 2,000 credits. Choose how many contacts to unlock per event using a simple slider. Best contacts (email-verified) are unlocked first."
+          "text": "1 credit unlocks a contact's identity: name, job title, company, LinkedIn profile, and the source LinkedIn post. Revealing that contact's verified work email is an optional +1 credit, and only on contacts that have one. You get 20 free credits on signup, and packs run from $29 for 200 credits up to $149 for 2,000. Credits never expire."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I filter the attendee list before spending credits?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Filter any event's attendee list by seniority, function, industry, company size, country, event role (organizer, sponsor, exhibitor, attendee), and speaker status, or search by job title or company. You see how many contacts match and how many have a verified email before paying, then unlock only the matches."
         }
       },
       {
@@ -137,21 +145,21 @@
           "name": "Starter",
           "price": "29",
           "priceCurrency": "USD",
-          "description": "200 credits — $0.145 per contact"
+          "description": "200 credits — $0.145 per credit"
         },
         {
           "@type": "Offer",
           "name": "Growth",
           "price": "79",
           "priceCurrency": "USD",
-          "description": "750 credits — $0.105 per contact"
+          "description": "750 credits — $0.105 per credit"
         },
         {
           "@type": "Offer",
           "name": "Pro",
           "price": "149",
           "priceCurrency": "USD",
-          "description": "2,000 credits — $0.075 per contact"
+          "description": "2,000 credits — $0.075 per credit"
         }
       ]
     }
@@ -569,7 +577,7 @@
                 </svg>
               </div>
               <span class="text-sm font-medium text-zinc-900">Unlock contacts with credits</span>
-              <span class="text-xs text-zinc-400">1 credit = 1 contact &middot; 20 free credits on signup &middot; From $0.075/contact</span>
+              <span class="text-xs text-zinc-400">From $0.075 per contact &middot; email reveal +1 credit &middot; 20 free credits on signup</span>
             </div>
           </div>
         </div>
@@ -829,8 +837,8 @@
           </div>
           <div class="flex flex-col items-center text-center gap-4">
             <div class="w-12 h-12 rounded-full flex items-center justify-center text-lg font-semibold text-emerald-600 bg-emerald-50">4</div>
-            <h3 class="text-lg font-medium text-zinc-900">Unlock &amp; download</h3>
-            <p class="text-sm text-zinc-500 leading-5">Choose how many contacts to unlock. Best contacts first. Download as CSV anytime.</p>
+            <h3 class="text-lg font-medium text-zinc-900">Filter, unlock &amp; download</h3>
+            <p class="text-sm text-zinc-500 leading-5">Filter to your ICP by role, seniority, and industry, unlock only the matches, add emails when you want them. Download as CSV anytime.</p>
           </div>
         </div>
       </div>
@@ -849,6 +857,14 @@
           </p>
         </div>
 
+        <!-- Filter callout -->
+        <div class="max-w-md mx-auto mb-6">
+          <div class="flex items-start gap-3 rounded-xl p-4 bg-emerald-50/60 border border-emerald-100">
+            <svg width="18" height="18" fill="none" viewBox="0 0 16 16" class="text-emerald-600 shrink-0 mt-0.5"><path d="M2 3.5h12M4 8h8M6.5 12.5h3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            <p class="text-sm text-zinc-600 leading-5"><span class="font-semibold text-zinc-900">Filter before you pay.</span> Narrow by seniority, function, industry, company size, country, event role &amp; speaker. See how many match, then spend credits only on the contacts you actually want.</p>
+          </div>
+        </div>
+
         <!-- Single pricing card -->
         <div class="max-w-md mx-auto">
           <div class="rounded-2xl p-8 flex flex-col gap-6 bg-white border border-zinc-200 shadow-sm">
@@ -857,8 +873,17 @@
               <div class="flex items-baseline gap-1">
                 <span class="text-5xl font-semibold text-zinc-900">$0.075</span>
               </div>
-              <p class="text-lg text-zinc-500 font-medium mt-1">per contact</p>
-              <p class="text-sm text-zinc-400 mt-1">Buy in credit packs &middot; 1 credit = 1 contact</p>
+              <p class="text-lg text-zinc-500 font-medium mt-1">per contact unlock</p>
+              <p class="text-sm text-zinc-400 mt-1">Name, title, company, LinkedIn &amp; post proof &middot; 1 credit each</p>
+            </div>
+
+            <!-- Email add-on -->
+            <div class="flex items-center justify-between px-4 py-3 rounded-lg bg-blue-50/60 border border-blue-100">
+              <div class="flex flex-col text-left">
+                <span class="text-sm font-semibold text-zinc-900">Reveal verified email</span>
+                <span class="text-xs text-zinc-500">Optional &middot; only contacts that have one</span>
+              </div>
+              <span class="text-sm font-semibold text-blue-600">+1 credit</span>
             </div>
 
             <div class="w-full h-px bg-zinc-100"></div>
@@ -874,7 +899,7 @@
                 </div>
                 <div class="flex flex-col items-end">
                   <span class="text-sm font-semibold text-zinc-900">200 credits</span>
-                  <span class="text-xs text-zinc-400">$0.145 / contact</span>
+                  <span class="text-xs text-zinc-400">$0.145 / credit</span>
                 </div>
               </div>
               <div class="flex items-center justify-between px-4 py-3 rounded-lg bg-zinc-50">
@@ -883,7 +908,7 @@
                 </div>
                 <div class="flex flex-col items-end">
                   <span class="text-sm font-semibold text-zinc-900">750 credits</span>
-                  <span class="text-xs text-emerald-600">$0.105 / contact &middot; Save 28%</span>
+                  <span class="text-xs text-emerald-600">$0.105 / credit &middot; Save 28%</span>
                 </div>
               </div>
               <div class="flex items-center justify-between px-4 py-3 rounded-lg bg-emerald-50/50 border border-emerald-100">
@@ -893,7 +918,7 @@
                 </div>
                 <div class="flex flex-col items-end">
                   <span class="text-sm font-semibold text-emerald-700">2,000 credits</span>
-                  <span class="text-xs text-emerald-600">$0.075 / contact &middot; Save 48%</span>
+                  <span class="text-xs text-emerald-600">$0.075 / credit &middot; Save 48%</span>
                 </div>
               </div>
             </div>
@@ -907,7 +932,7 @@
               </li>
               <li class="flex items-center gap-2">
                 <svg width="16" height="16" fill="none" viewBox="0 0 16 16" class="text-emerald-600 shrink-0"><path d="M4 8L7 11L12 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                <span class="text-sm text-zinc-600">Verified work email</span>
+                <span class="text-sm text-zinc-600">Job title & company details</span>
               </li>
               <li class="flex items-center gap-2">
                 <svg width="16" height="16" fill="none" viewBox="0 0 16 16" class="text-emerald-600 shrink-0"><path d="M4 8L7 11L12 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -915,7 +940,11 @@
               </li>
               <li class="flex items-center gap-2">
                 <svg width="16" height="16" fill="none" viewBox="0 0 16 16" class="text-emerald-600 shrink-0"><path d="M4 8L7 11L12 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                <span class="text-sm text-zinc-600">Job title & company details</span>
+                <span class="text-sm text-zinc-600">Verified work email (reveal for +1 credit)</span>
+              </li>
+              <li class="flex items-center gap-2">
+                <svg width="16" height="16" fill="none" viewBox="0 0 16 16" class="text-emerald-600 shrink-0"><path d="M4 8L7 11L12 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span class="text-sm text-zinc-600">Filter by ICP before you unlock</span>
               </li>
               <li class="flex items-center gap-2">
                 <svg width="16" height="16" fill="none" viewBox="0 0 16 16" class="text-emerald-600 shrink-0"><path d="M4 8L7 11L12 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -985,6 +1014,15 @@
                 <td class="px-4 py-3 text-zinc-300">No</td>
               </tr>
               <tr class="border-b border-zinc-50">
+                <td class="px-5 py-3 text-zinc-600 font-medium">Filter by ICP before paying</td>
+                <td class="px-4 py-3 text-emerald-600">
+                  <svg width="16" height="16" fill="none" viewBox="0 0 16 16" class="inline"><path d="M4 8L7 11L12 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </td>
+                <td class="px-4 py-3 text-zinc-400">Manual</td>
+                <td class="px-4 py-3 text-zinc-300">&mdash;</td>
+                <td class="px-4 py-3 text-zinc-400">Account-level only</td>
+              </tr>
+              <tr class="border-b border-zinc-50">
                 <td class="px-5 py-3 text-zinc-600 font-medium">LinkedIn proof</td>
                 <td class="px-4 py-3 text-emerald-600">
                   <svg width="16" height="16" fill="none" viewBox="0 0 16 16" class="inline"><path d="M4 8L7 11L12 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -1037,7 +1075,15 @@
               How do credits work?
               <svg width="16" height="16" fill="none" viewBox="0 0 16 16" class="text-zinc-400 transition-transform group-open:rotate-45 shrink-0 ml-4"><path d="M8 3V13M3 8H13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
             </summary>
-            <p class="mt-3 text-sm text-zinc-500 leading-6">1 credit = 1 contact unlock. You get 20 free credits on signup. Buy more anytime — packs start at $29 for 200 credits, up to $149 for 2,000 credits. Choose how many contacts to unlock per event using a simple slider. Best contacts (email-verified) are unlocked first.</p>
+            <p class="mt-3 text-sm text-zinc-500 leading-6">1 credit unlocks a contact's identity: name, job title, company, LinkedIn profile, and the source LinkedIn post. Revealing that contact's verified work email is an optional +1 credit, and only on contacts that have one, so you never pay for an email that doesn't exist. You get 20 free credits on signup, and packs run from $29 for 200 credits up to $149 for 2,000. Credits never expire.</p>
+          </details>
+
+          <details class="group py-5">
+            <summary class="flex items-center justify-between cursor-pointer list-none text-zinc-900 font-medium">
+              Can I filter the list before spending credits?
+              <svg width="16" height="16" fill="none" viewBox="0 0 16 16" class="text-zinc-400 transition-transform group-open:rotate-45 shrink-0 ml-4"><path d="M8 3V13M3 8H13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </summary>
+            <p class="mt-3 text-sm text-zinc-500 leading-6">Yes. Filter any event's attendee list by seniority, function, industry, company size, country, event role (organizer, sponsor, exhibitor, attendee), and speaker status, or search by job title or company. You see how many contacts match and how many have a verified email before paying, then unlock only the matches.</p>
           </details>
 
           <details class="group py-5">
