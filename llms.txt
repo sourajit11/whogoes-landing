@@ -4,7 +4,7 @@
 
 ## What WhoGoes Does
 
-WhoGoes monitors public LinkedIn posts where professionals announce they are attending, exhibiting at, or speaking at trade shows and conferences. It collects these signals and enriches each contact with verified work emails, job titles, company names, and LinkedIn profile URLs. Sales and marketing teams use WhoGoes to build outreach-ready prospect lists before events — with proof of attendance intent.
+WhoGoes monitors public LinkedIn posts where professionals announce they are attending, exhibiting at, or speaking at trade shows and conferences. It collects these signals and enriches each contact with verified work emails, job titles, company names, and LinkedIn profile URLs. Sales and marketing teams use WhoGoes to build outreach-ready prospect lists before events, with proof of attendance intent.
 
 ## Key Facts
 
@@ -28,8 +28,8 @@ WhoGoes monitors public LinkedIn posts where professionals announce they are att
 
 ## How It Works
 
-1. Browse 1,200+ events — filter by industry, date, or region (no login needed)
-2. Preview 5 real contacts per event for free — see names, titles, companies, and LinkedIn posts
+1. Browse 1,200+ events and filter by industry, date, or region (no login needed)
+2. Preview 5 real contacts per event for free to see names, titles, companies, and LinkedIn posts
 3. Register and receive 20 free credits
 4. Unlock contacts with credits (1 credit = 1 contact) and download as CSV
 
