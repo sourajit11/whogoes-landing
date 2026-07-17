@@ -39,7 +39,7 @@ WhoGoes monitors public LinkedIn posts where professionals announce they are att
 - Starter: $29 for 200 credits ($0.145/contact)
 - Growth: $79 for 750 credits ($0.105/contact)
 - Pro: $149 for 2,000 credits ($0.075/contact)
-- 1 credit unlocks 1 contact. Take an event's full list and verified emails are included; on filtered unlocks, revealing a contact's verified email costs 1 extra credit
+- 1 credit unlocks 1 contact. Any unfiltered unlock (the whole list or a partial slice) includes the verified email free; filter to your ICP and revealing a contact's verified email costs 1 extra credit
 - No contracts, no minimums, credits never expire
 
 ## Comparison to Alternatives
