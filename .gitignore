@@ -1,1 +1,7 @@
 node_modules/
+
+# vercel.json publishes the repo root, so anything committed here is public.
+# Keep internal planning docs in the parent Research/Whogoes folder instead.
+*PLAN*.md
+*_PLAN.md
+*-PLAN.md
