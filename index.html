@@ -113,9 +113,39 @@
   {
     "@context": "https://schema.org",
     "@type": "Organization",
+    "@id": "https://whogoes.co/#organization",
     "name": "WhoGoes",
+    "alternateName": "WhoGoes.co",
+    "legalName": "AVRPIX SOLUTIONS PVT LTD",
     "url": "https://whogoes.co/",
-    "description": "Trade show and event attendee data with LinkedIn proof."
+    "description": "Trade show and event attendee data with LinkedIn proof.",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://whogoes.co/icon-192.png",
+      "width": 192,
+      "height": 192
+    },
+    "image": "https://whogoes.co/og-image.png",
+    "email": "hello@whogoes.co",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Pune",
+      "addressRegion": "Maharashtra",
+      "postalCode": "411037",
+      "addressCountry": "IN"
+    },
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "contactType": "customer support",
+      "email": "hello@whogoes.co",
+      "url": "https://whogoes.co/",
+      "availableLanguage": "en"
+    },
+    "sameAs": [
+      "https://www.linkedin.com/company/whogoes",
+      "https://peerpush.net/p/whogoes",
+      "https://findly.tools/whogoes"
+    ]
   }
   </script>
 
@@ -126,6 +156,7 @@
     "@type": "SoftwareApplication",
     "name": "WhoGoes",
     "url": "https://whogoes.co/",
+    "publisher": { "@id": "https://whogoes.co/#organization" },
     "applicationCategory": "BusinessApplication",
     "operatingSystem": "Web",
     "description": "Outreach-ready trade show & conference attendee lists with LinkedIn proof. Browse 1,200+ events free. Verified names, emails & companies.",
@@ -174,9 +205,11 @@
   {
     "@context": "https://schema.org",
     "@type": "WebSite",
+    "@id": "https://whogoes.co/#website",
     "name": "WhoGoes",
     "url": "https://whogoes.co/",
     "description": "Outreach-ready trade show & conference attendee lists with LinkedIn proof. Browse 1,200+ events free. Verified names, emails & companies.",
+    "publisher": { "@id": "https://whogoes.co/#organization" },
     "potentialAction": {
       "@type": "SearchAction",
       "target": "https://whogoes.co/events?q={search_term_string}",
@@ -195,16 +228,8 @@
     "description": "Outreach-ready trade show & conference attendee lists with LinkedIn proof. Browse 1,200+ events free. Verified names, emails & companies.",
     "datePublished": "2026-03-16",
     "dateModified": "2026-03-22",
-    "isPartOf": {
-      "@type": "WebSite",
-      "name": "WhoGoes",
-      "url": "https://whogoes.co"
-    },
-    "publisher": {
-      "@type": "Organization",
-      "name": "WhoGoes",
-      "url": "https://whogoes.co"
-    }
+    "isPartOf": { "@id": "https://whogoes.co/#website" },
+    "publisher": { "@id": "https://whogoes.co/#organization" }
   }
   </script>
 
