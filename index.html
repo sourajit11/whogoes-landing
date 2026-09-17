@@ -1004,6 +1004,7 @@
           <div class="flex flex-col gap-3">
             <span class="text-xs font-medium text-zinc-500 uppercase tracking-wider">Company</span>
             <a href="#" onclick="event.preventDefault();openContactModal()" class="text-sm text-zinc-500 hover:text-zinc-900 transition-colors">Contact</a>
+            <a href="mailto:hello@whogoes.co" class="text-sm text-zinc-500 hover:text-zinc-900 transition-colors">Support: hello@whogoes.co</a>
             <a href="https://www.linkedin.com/company/whogoes" target="_blank" rel="noopener" class="text-sm text-zinc-500 hover:text-zinc-900 transition-colors">LinkedIn</a>
             <a target="_blank" rel="noopener" href="https://app.whogoes.co/affiliates" class="text-sm font-semibold text-emerald-700 hover:text-emerald-700 transition-colors">Affiliate Program</a>
           </div>
@@ -1295,17 +1296,6 @@
       const next = PRODUCT_TABS[(idx + dir + PRODUCT_TABS.length) % PRODUCT_TABS.length];
       showProductTab(next);
     }
-  </script>
-  <!-- Crisp live chat -->
-  <script type="text/javascript">
-    window.$crisp = [];
-    window.CRISP_WEBSITE_ID = "77b30fe6-3ea3-4c52-985b-efec53caec6d";
-    (function () {
-      var s = document.createElement("script");
-      s.src = "https://client.crisp.chat/l.js";
-      s.async = 1;
-      document.getElementsByTagName("head")[0].appendChild(s);
-    })();
   </script>
 </body>
 </html>
