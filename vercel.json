@@ -14,8 +14,8 @@
     }
   ],
   "rewrites": [
-    { "source": "/ingest/static/:path*", "destination": "https://eu-assets.i.posthog.com/static/:path*" },
-    { "source": "/ingest/:path*", "destination": "https://eu.i.posthog.com/:path*" },
+    { "source": "/ingest/static/(.*)", "destination": "https://eu-assets.i.posthog.com/static/$1" },
+    { "source": "/ingest/(.*)", "destination": "https://eu.i.posthog.com/$1" },
     { "source": "/blog", "destination": "https://app.whogoes.co/blog" },
     { "source": "/blog/:path*", "destination": "https://app.whogoes.co/blog/:path*" },
     { "source": "/events", "destination": "https://app.whogoes.co/events" },
