@@ -290,17 +290,20 @@
       box-shadow: 0 0 0 1px rgba(0,0,0,0.06), 0 4px 6px rgba(0,0,0,0.04), 0 20px 40px rgba(0,0,0,0.08);
     }
 
-    .feature-card { transition: background-color 0.2s ease, box-shadow 0.2s ease; }
-    .feature-card:hover { background-color: #ecfdf5; }
+    .feature-card {
+      border: 1px solid transparent;
+      transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.25s ease, border-color 0.25s ease;
+    }
+    .feature-card:hover { transform: translateY(-3px); box-shadow: 0 12px 28px -12px rgba(24, 24, 27, 0.18); border-color: rgba(24, 24, 27, 0.06); }
 
+    /* Animate the row track, not max-height, so the menu opens to its real height. */
     .mobile-menu {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.3s ease;
+      display: grid;
+      grid-template-rows: 0fr;
+      transition: grid-template-rows 0.3s cubic-bezier(0.22, 1, 0.36, 1);
     }
-    .mobile-menu.active {
-      max-height: 300px;
-    }
+    .mobile-menu.active { grid-template-rows: 1fr; }
+    .mobile-menu > div { overflow: hidden; min-height: 0; }
     .mobile-header {
       border-radius: 9999px;
       transition: border-radius 0.3s ease;
@@ -322,6 +325,26 @@
       top: 0; right: -31px;
       width: 32px; height: 32px;
       background: radial-gradient(circle at 100% 100%, transparent 32px, #ffffff 32.5px);
+    }
+
+    /* Pricing: soft green wash at the top of the card, selectable packs */
+    .pricing-card { background: radial-gradient(ellipse 90% 45% at 50% 0%, #ecfdf5 0%, #ffffff 70%); }
+    .pack {
+      display: flex; align-items: center; justify-content: space-between; width: 100%;
+      padding: 0.75rem 1rem; border-radius: 0.5rem; text-align: left; cursor: pointer;
+      background: #fafafa; border: 1px solid transparent;
+      transition: background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+    .pack:hover { background: #f4f4f5; }
+    .pack:focus-visible { outline: 2px solid #047857; outline-offset: 2px; }
+    .pack[aria-pressed="true"] { background: #ecfdf5; border-color: #a7f3d0; box-shadow: 0 0 0 3px rgba(4, 120, 87, 0.08); }
+    .pack[aria-pressed="true"] .pack-price { color: #047857; }
+    @keyframes priceTick { from { opacity: 0.3; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+    .price-tick { display: inline-block; animation: priceTick 0.25s cubic-bezier(0.22, 1, 0.36, 1); }
+    @media (prefers-reduced-motion: reduce) {
+      .price-tick { animation: none; }
+      .feature-card, .feature-card:hover { transition: none; transform: none; }
+      .mobile-menu, .rotating-text span { transition: none; }
     }
 
     .tab-active {
@@ -359,7 +382,7 @@
       <!-- Auth -->
       <a target="_blank" rel="noopener" href="https://app.whogoes.co/login" class="text-sm font-medium text-zinc-500 hover:text-zinc-900 transition-colors px-2">Login</a>
       <a target="_blank" rel="noopener" href="https://app.whogoes.co/register">
-        <button class="flex items-center justify-center px-4 h-8 text-sm font-medium text-white bg-emerald-700 hover:bg-emerald-600 transition-all pill cursor-pointer active:scale-[0.98]">
+        <button class="flex items-center justify-center px-4 h-8 text-sm font-medium text-white bg-emerald-700 hover:bg-emerald-800 transition-all pill cursor-pointer active:scale-[0.98]">
           Register
         </button>
       </a>
@@ -378,7 +401,7 @@
       <div class="flex items-center gap-2">
         <a target="_blank" rel="noopener" href="https://app.whogoes.co/login" class="text-sm font-medium text-zinc-500 hover:text-zinc-900 transition-colors">Login</a>
         <a target="_blank" rel="noopener" href="https://app.whogoes.co/register">
-          <button class="flex items-center justify-center px-3 h-8 text-sm font-medium text-white bg-emerald-700 hover:bg-emerald-600 transition-all pill cursor-pointer">
+          <button class="flex items-center justify-center px-3 h-8 text-sm font-medium text-white bg-emerald-700 hover:bg-emerald-800 transition-all pill cursor-pointer">
             Register
           </button>
         </a>
@@ -396,6 +419,7 @@
       </div>
     </div>
     <div id="mobile-nav" class="mobile-menu px-4">
+      <div>
       <nav class="flex flex-col gap-1 border-t border-zinc-200/60 pt-3 pb-4">
         <a href="https://whogoes.co/events" onclick="closeMobileMenu()" class="text-sm font-medium text-zinc-500 hover:text-zinc-900 hover:bg-zinc-50 py-2.5 px-3 rounded-lg transition-colors">Events</a>
         <a href="#pricing" onclick="closeMobileMenu()" class="text-sm font-medium text-zinc-500 hover:text-zinc-900 hover:bg-zinc-50 py-2.5 px-3 rounded-lg transition-colors">Pricing</a>
@@ -403,6 +427,7 @@
         <a href="#faq" onclick="closeMobileMenu()" class="text-sm font-medium text-zinc-500 hover:text-zinc-900 hover:bg-zinc-50 py-2.5 px-3 rounded-lg transition-colors">FAQ</a>
         <a href="https://whogoes.co/blog" target="_blank" rel="noopener" onclick="closeMobileMenu()" class="text-sm font-medium text-zinc-500 hover:text-zinc-900 hover:bg-zinc-50 py-2.5 px-3 rounded-lg transition-colors">Blog</a>
       </nav>
+      </div>
     </div>
   </header>
 
@@ -426,7 +451,7 @@
         </a>
 
         <!-- Headline with rotating text -->
-        <h1 class="text-5xl md:text-6xl tracking-tighter text-zinc-900 font-semibold leading-[1.1] max-w-3xl">
+        <h1 class="text-5xl md:text-6xl tracking-tight text-zinc-900 font-semibold leading-[1.1] max-w-3xl">
           <span class="rotating-text inline-block h-[1.15em] overflow-hidden align-bottom">
             <span id="rotating-word" class="block text-emerald-700">Trade Show</span>
           </span>
@@ -441,7 +466,7 @@
         <!-- CTAs -->
         <div class="flex flex-col md:flex-row items-center gap-4 mt-2">
           <a href="https://whogoes.co/events">
-            <button class="flex items-center justify-center px-6 h-11 text-base font-medium text-white bg-emerald-700 hover:bg-emerald-600 transition-all pill cursor-pointer active:scale-[0.98] w-[280px] md:w-auto">
+            <button class="flex items-center justify-center px-6 h-11 text-base font-medium text-white bg-emerald-700 hover:bg-emerald-800 transition-all pill cursor-pointer active:scale-[0.98] w-[280px] md:w-auto">
               Browse Events Free
             </button>
           </a>
@@ -531,12 +556,12 @@
               <div class="flex items-center justify-between px-6 py-4 border-b border-zinc-100">
                 <div class="flex items-center gap-3">
                   <span class="text-sm font-semibold text-zinc-900">Cannes Lions 2026</span>
-                  <span class="text-xs px-2 py-0.5 rounded-full font-medium bg-emerald-50 text-emerald-700">8,829 contacts</span>
+                  <span class="text-xs px-2 py-0.5 rounded-full font-medium bg-emerald-50 text-emerald-700">8,713 contacts</span>
                 </div>
                 <span class="text-xs px-2 py-0.5 rounded-full font-medium bg-emerald-50 text-emerald-700">Active</span>
               </div>
               <a href="https://whogoes.co/events/cannes-lions-2026" class="block" aria-label="See the live Cannes Lions 2026 attendee list">
-                <img src="/product-event-page.webp" srcset="/product-event-page-1232w.webp 1232w, /product-event-page.webp 2464w" sizes="(min-width: 1080px) 1024px, 100vw" alt="WhoGoes attendee list for Cannes Lions 2026: real contacts with name, title, company, event role, verified email domain, LinkedIn profile and the post proving attendance" class="w-full h-auto" width="2464" height="1302" />
+                <img src="/product-event-page.webp" srcset="/product-event-page-1232w.webp 1232w, /product-event-page.webp 2464w" sizes="(min-width: 1080px) 1024px, 100vw" alt="WhoGoes attendee list for Cannes Lions 2026: real contacts with name, title, company, event role, verified email domain, LinkedIn profile and the post proving attendance" class="w-full h-auto" width="2464" height="1986" />
               </a>
               <div class="flex flex-col items-center gap-1 border-t border-zinc-100 py-4">
                 <span class="text-sm font-medium text-zinc-900">Real page, real contacts. Click to see it live</span>
@@ -643,14 +668,14 @@
     <section class="w-full max-w-5xl px-5 mx-auto py-20 flex flex-col gap-12">
       <div class="flex flex-col items-center text-center gap-5">
         <span class="flex items-center justify-center font-medium text-sm px-3 h-6 rounded-md bg-emerald-50 text-emerald-700">Features</span>
-        <h2 class="text-3xl md:text-4xl tracking-tighter text-zinc-900 leading-tight font-medium max-w-lg">
+        <h2 class="text-3xl md:text-4xl tracking-tight text-zinc-900 leading-tight font-medium max-w-lg">
           Everything you need to prospect before every event
         </h2>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
         <!-- Intent Proof -->
-        <div class="feature-card flex flex-col rounded-xl min-h-[280px] overflow-hidden bg-emerald-50/50">
+        <div class="feature-card flex flex-col rounded-xl min-h-[280px] overflow-hidden bg-emerald-50/60">
           <div class="flex flex-col p-6 px-8 gap-3 items-start">
             <div class="w-10 h-9 rounded-full flex items-center justify-center bg-emerald-100">
               <svg width="20" height="20" fill="none" viewBox="0 0 16 16" class="text-emerald-700">
@@ -674,22 +699,22 @@
         </div>
 
         <!-- Contact Enrichment -->
-        <div class="feature-card flex flex-col rounded-xl min-h-[280px] overflow-hidden bg-emerald-50/50">
+        <div class="feature-card flex flex-col rounded-xl min-h-[280px] overflow-hidden bg-blue-50/60">
           <div class="flex flex-col p-6 px-8 gap-3 items-start">
-            <div class="w-10 h-9 rounded-full flex items-center justify-center bg-emerald-100">
-              <svg width="20" height="20" fill="none" viewBox="0 0 16 16" class="text-emerald-600">
+            <div class="w-10 h-9 rounded-full flex items-center justify-center bg-blue-100">
+              <svg width="20" height="20" fill="none" viewBox="0 0 16 16" class="text-blue-600">
                 <path d="M11 14V12.6667C11 11.9594 10.719 11.2811 10.2189 10.781C9.71885 10.281 9.04058 10 8.33333 10H3.66667C2.95942 10 2.28115 10.281 1.78105 10.781C1.28095 11.2811 1 11.9594 1 12.6667V14M8.66667 4.33333C8.66667 5.80609 7.47276 7 6 7C4.52724 7 3.33333 5.80609 3.33333 4.33333C3.33333 2.86057 4.52724 1.66667 6 1.66667C7.47276 1.66667 8.66667 2.86057 8.66667 4.33333Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
               </svg>
             </div>
-            <h3 class="text-2xl leading-7 font-medium text-emerald-700">Contact enrichment</h3>
+            <h3 class="text-2xl leading-7 font-medium text-blue-700">Contact enrichment</h3>
             <p class="text-lg leading-6 font-medium text-zinc-900">Name, email, title, company. All verified.</p>
             <ul class="flex flex-col gap-1 mt-1">
               <li class="flex items-center gap-2">
-                <svg width="16" height="16" fill="none" viewBox="0 0 16 16" class="text-emerald-600 shrink-0"><path d="M4 8L7 11L12 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <svg width="16" height="16" fill="none" viewBox="0 0 16 16" class="text-blue-600 shrink-0"><path d="M4 8L7 11L12 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
                 <span class="text-sm font-medium text-zinc-700">Verified work email</span>
               </li>
               <li class="flex items-center gap-2">
-                <svg width="16" height="16" fill="none" viewBox="0 0 16 16" class="text-emerald-600 shrink-0"><path d="M4 8L7 11L12 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <svg width="16" height="16" fill="none" viewBox="0 0 16 16" class="text-blue-600 shrink-0"><path d="M4 8L7 11L12 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
                 <span class="text-sm font-medium text-zinc-700">Company firmographics</span>
               </li>
             </ul>
@@ -697,26 +722,26 @@
         </div>
 
         <!-- Event Coverage -->
-        <div class="feature-card flex flex-col rounded-xl min-h-[280px] overflow-hidden bg-emerald-50/50">
+        <div class="feature-card flex flex-col rounded-xl min-h-[280px] overflow-hidden bg-violet-50/60">
           <div class="flex flex-col p-6 px-8 gap-3 items-start">
-            <div class="w-10 h-9 rounded-full flex items-center justify-center bg-emerald-100">
-              <svg width="20" height="20" fill="none" viewBox="0 0 16 16" class="text-emerald-600">
+            <div class="w-10 h-9 rounded-full flex items-center justify-center bg-violet-100">
+              <svg width="20" height="20" fill="none" viewBox="0 0 16 16" class="text-violet-600">
                 <path d="M8 15C11.866 15 15 11.866 15 8C15 4.13401 11.866 1 8 1M8 15C4.13401 15 1 11.866 1 8C1 4.13401 4.13401 1 8 1M8 15C6.22373 15 4.78378 11.866 4.78378 8C4.78378 4.13401 6.22373 1 8 1M8 15C9.77626 15 11.2162 11.866 11.2162 8C11.2162 4.13401 9.77626 1 8 1M14.8108 8H1.18919" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/>
               </svg>
             </div>
-            <h3 class="text-2xl leading-7 font-medium text-emerald-700">1,200+ events</h3>
+            <h3 class="text-2xl leading-7 font-medium text-violet-700">1,200+ events</h3>
             <p class="text-lg leading-6 font-medium text-zinc-900">Every major trade show across every industry.</p>
             <ul class="flex flex-col gap-1 mt-1">
               <li class="flex items-center gap-2">
-                <svg width="16" height="16" fill="none" viewBox="0 0 16 16" class="text-emerald-600 shrink-0"><path d="M4 8L7 11L12 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <svg width="16" height="16" fill="none" viewBox="0 0 16 16" class="text-violet-600 shrink-0"><path d="M4 8L7 11L12 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
                 <span class="text-sm font-medium text-zinc-700">Filter by industry & region</span>
               </li>
               <li class="flex items-center gap-2">
-                <svg width="16" height="16" fill="none" viewBox="0 0 16 16" class="text-emerald-600 shrink-0"><path d="M4 8L7 11L12 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <svg width="16" height="16" fill="none" viewBox="0 0 16 16" class="text-violet-600 shrink-0"><path d="M4 8L7 11L12 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
                 <span class="text-sm font-medium text-zinc-700">New events added within 48hrs</span>
               </li>
               <li class="flex items-center gap-2">
-                <svg width="16" height="16" fill="none" viewBox="0 0 16 16" class="text-emerald-600 shrink-0"><path d="M4 8L7 11L12 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <svg width="16" height="16" fill="none" viewBox="0 0 16 16" class="text-violet-600 shrink-0"><path d="M4 8L7 11L12 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
                 <span class="text-sm font-medium text-zinc-700">CES, HIMSS, NRF, RSA & more</span>
               </li>
             </ul>
@@ -730,29 +755,31 @@
       <div class="max-w-5xl mx-auto px-5">
         <div class="flex flex-col items-center text-center gap-5 mb-16">
           <span class="flex items-center justify-center font-medium text-sm px-3 h-6 rounded-md bg-emerald-50 text-emerald-700">How it works</span>
-          <h2 class="text-3xl md:text-4xl tracking-tighter text-zinc-900 leading-tight font-medium max-w-lg">
+          <h2 class="text-3xl md:text-4xl tracking-tight text-zinc-900 leading-tight font-medium max-w-lg">
             Get started in minutes
           </h2>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-6">
+        <div class="relative grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-6">
+          <!-- Dashed track joining the four steps (desktop only) -->
+          <div class="hidden md:block absolute top-6 left-[12.5%] right-[12.5%] border-t-2 border-dashed border-emerald-200" aria-hidden="true"></div>
           <div class="flex flex-col items-center text-center gap-4">
-            <div class="w-12 h-12 rounded-full flex items-center justify-center text-lg font-semibold text-emerald-700 bg-emerald-50">1</div>
+            <div class="relative w-12 h-12 rounded-full flex items-center justify-center text-lg font-semibold text-emerald-700 bg-white ring-1 ring-emerald-200 shadow-sm">1</div>
             <h3 class="text-lg font-medium text-zinc-900">Browse events</h3>
             <p class="text-sm text-zinc-500 leading-5">Search 1,200+ events. Filter by industry, date, or region. No login needed.</p>
           </div>
           <div class="flex flex-col items-center text-center gap-4">
-            <div class="w-12 h-12 rounded-full flex items-center justify-center text-lg font-semibold text-emerald-700 bg-emerald-50">2</div>
+            <div class="relative w-12 h-12 rounded-full flex items-center justify-center text-lg font-semibold text-emerald-700 bg-white ring-1 ring-emerald-200 shadow-sm">2</div>
             <h3 class="text-lg font-medium text-zinc-900">Preview 5 contacts</h3>
             <p class="text-sm text-zinc-500 leading-5">See real names, titles, companies, and LinkedIn posts. Free, no sign-up required.</p>
           </div>
           <div class="flex flex-col items-center text-center gap-4">
-            <div class="w-12 h-12 rounded-full flex items-center justify-center text-lg font-semibold text-emerald-700 bg-emerald-50">3</div>
+            <div class="relative w-12 h-12 rounded-full flex items-center justify-center text-lg font-semibold text-emerald-700 bg-white ring-1 ring-emerald-200 shadow-sm">3</div>
             <h3 class="text-lg font-medium text-zinc-900">Register &amp; get 20 credits</h3>
             <p class="text-sm text-zinc-500 leading-5">Create a free account. Instantly receive 20 credits to unlock your first contacts.</p>
           </div>
           <div class="flex flex-col items-center text-center gap-4">
-            <div class="w-12 h-12 rounded-full flex items-center justify-center text-lg font-semibold text-emerald-700 bg-emerald-50">4</div>
+            <div class="relative w-12 h-12 rounded-full flex items-center justify-center text-lg font-semibold text-white bg-emerald-700 shadow-md shadow-emerald-700/25">4</div>
             <h3 class="text-lg font-medium text-zinc-900">Filter, unlock &amp; download</h3>
             <p class="text-sm text-zinc-500 leading-5">Filter to your ICP by role, seniority, and industry, unlock only the matches, add emails when you want them. Download as CSV anytime.</p>
           </div>
@@ -765,7 +792,7 @@
       <div class="max-w-5xl mx-auto px-5">
         <div class="flex flex-col items-center text-center gap-5 mb-16">
           <span class="flex items-center justify-center font-medium text-sm px-3 h-6 rounded-md bg-emerald-50 text-emerald-700">Pricing</span>
-          <h2 class="text-3xl md:text-4xl tracking-tighter text-zinc-900 leading-tight font-medium max-w-lg">
+          <h2 class="text-3xl md:text-4xl tracking-tight text-zinc-900 leading-tight font-medium max-w-lg">
             Pay as you go. No surprises.
           </h2>
           <p class="w-full max-w-md font-medium text-lg leading-6 text-zinc-500">
@@ -783,63 +810,66 @@
 
         <!-- Single pricing card -->
         <div class="max-w-md mx-auto">
-          <div class="rounded-2xl p-8 flex flex-col gap-6 bg-white border border-zinc-200 shadow-sm">
+          <div class="pricing-card rounded-2xl p-8 flex flex-col gap-6 border border-zinc-200 shadow-sm">
             <div class="flex flex-col gap-2 items-center text-center">
               <span class="text-xs px-2.5 py-1 rounded-full font-medium bg-emerald-50 text-emerald-700 mb-2">Pay as you go</span>
-              <div class="flex items-baseline gap-1">
-                <span class="text-5xl font-semibold text-zinc-900">$0.075</span>
-              </div>
+              <span id="price-per" class="text-5xl font-semibold text-zinc-900 tabular-nums">$0.075</span>
               <p class="text-lg text-zinc-500 font-medium mt-1">per contact unlock</p>
-              <p class="text-sm text-zinc-500 mt-1">Name, title, company, LinkedIn &amp; post proof &middot; 1 credit each</p>
+              <p class="text-sm text-zinc-500 mt-1">with the <span id="price-pack" class="font-semibold text-zinc-900">$149 pack (2,000 credits)</span>. Pick a pack below.</p>
             </div>
 
-            <!-- Two ways to unlock -->
+            <!-- Two ways to unlock: green = everything included, blue = filtered to your ICP -->
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-              <div class="rounded-lg px-4 py-3 bg-emerald-50/60 border border-emerald-100 text-left">
-                <span class="text-sm font-semibold text-zinc-900">Unlock without filters</span>
-                <p class="text-xs text-zinc-500 mt-1">1 credit per contact, the whole list or a slice, with every verified email included free.</p>
+              <div class="rounded-lg px-4 py-3 bg-emerald-50/70 border border-emerald-100 text-left">
+                <span class="block text-sm font-semibold text-emerald-800">
+                  Unlock without filters
+                </span>
+                <p class="text-xs text-zinc-600 mt-1">1 credit per contact, the whole list or a slice, with every verified email included free.</p>
+                <p class="text-xs font-medium text-emerald-800 mt-2">Up to <span id="buys-unfiltered" class="tabular-nums">2,000</span> contacts, emails included</p>
               </div>
-              <div class="rounded-lg px-4 py-3 bg-zinc-50 border border-zinc-200 text-left">
-                <span class="text-sm font-semibold text-zinc-900">Filter to your ICP</span>
-                <p class="text-xs text-zinc-500 mt-1">1 credit per matching contact, +1 credit per email you reveal.</p>
+              <div class="rounded-lg px-4 py-3 bg-blue-50/70 border border-blue-100 text-left">
+                <span class="block text-sm font-semibold text-blue-800">
+                  Filter to your ICP
+                </span>
+                <p class="text-xs text-zinc-600 mt-1">1 credit per matching contact, +1 credit per email you reveal.</p>
+                <p class="text-xs font-medium text-blue-800 mt-2">Up to <span id="buys-filtered" class="tabular-nums">1,000</span> contacts with emails</p>
               </div>
             </div>
 
             <div class="w-full h-px bg-zinc-100"></div>
 
-            <div class="flex flex-col gap-3">
-              <div class="flex items-center justify-between px-4 py-3 rounded-lg bg-emerald-50/50">
-                <span class="text-sm text-zinc-500">Free on signup</span>
+            <div class="flex flex-col gap-3" role="group" aria-label="Credit packs">
+              <div class="flex items-center justify-between px-4 py-3 rounded-lg bg-emerald-50/70">
+                <span class="text-sm text-zinc-600">Free on signup</span>
                 <span class="text-sm font-semibold text-emerald-700">20 credits</span>
               </div>
-              <div class="flex items-center justify-between px-4 py-3 rounded-lg bg-zinc-50">
-                <div class="flex flex-col">
-                  <span class="text-sm font-semibold text-zinc-900">$29</span>
-                </div>
-                <div class="flex flex-col items-end">
+              <button type="button" class="pack" data-price="29" data-credits="200" data-per="0.145" aria-pressed="false" onclick="selectPack(this)">
+                <span class="flex items-center gap-2">
+                  <span class="pack-price text-sm font-semibold text-zinc-900">$29</span>
+                </span>
+                <span class="flex flex-col items-end gap-0.5">
                   <span class="text-sm font-semibold text-zinc-900">200 credits</span>
-                  <span class="text-xs text-zinc-500">$0.145 / credit</span>
-                </div>
-              </div>
-              <div class="flex items-center justify-between px-4 py-3 rounded-lg bg-zinc-50">
-                <div class="flex flex-col">
-                  <span class="text-sm font-semibold text-zinc-900">$79</span>
-                </div>
-                <div class="flex flex-col items-end">
+                  <span class="flex items-center gap-1.5 text-xs text-zinc-500">$0.145 / credit</span>
+                </span>
+              </button>
+              <button type="button" class="pack" data-price="79" data-credits="750" data-per="0.105" aria-pressed="false" onclick="selectPack(this)">
+                <span class="flex items-center gap-2">
+                  <span class="pack-price text-sm font-semibold text-zinc-900">$79</span>
+                </span>
+                <span class="flex flex-col items-end gap-0.5">
                   <span class="text-sm font-semibold text-zinc-900">750 credits</span>
-                  <span class="text-xs text-emerald-700">$0.105 / credit &middot; Save 28%</span>
-                </div>
-              </div>
-              <div class="flex items-center justify-between px-4 py-3 rounded-lg bg-emerald-50/50 border border-emerald-100">
-                <div class="flex flex-col">
-                  <span class="text-sm font-semibold text-emerald-700">$149</span>
-                  <span class="text-xs text-emerald-700">Best value</span>
-                </div>
-                <div class="flex flex-col items-end">
-                  <span class="text-sm font-semibold text-emerald-700">2,000 credits</span>
-                  <span class="text-xs text-emerald-700">$0.075 / credit &middot; Save 48%</span>
-                </div>
-              </div>
+                  <span class="flex items-center gap-1.5 text-xs text-zinc-500">$0.105 / credit <span class="text-[11px] font-semibold px-1.5 py-0.5 rounded-full bg-amber-50 text-amber-800 ring-1 ring-amber-200">Save 28%</span></span>
+                </span>
+              </button>
+              <button type="button" class="pack" data-price="149" data-credits="2000" data-per="0.075" aria-pressed="true" onclick="selectPack(this)">
+                <span class="flex items-center gap-2">
+                  <span class="pack-price text-sm font-semibold text-zinc-900">$149</span><span class="text-xs font-medium text-emerald-700">Best value</span>
+                </span>
+                <span class="flex flex-col items-end gap-0.5">
+                  <span class="text-sm font-semibold text-zinc-900">2,000 credits</span>
+                  <span class="flex items-center gap-1.5 text-xs text-zinc-500">$0.075 / credit <span class="text-[11px] font-semibold px-1.5 py-0.5 rounded-full bg-amber-50 text-amber-800 ring-1 ring-amber-200">Save 48%</span></span>
+                </span>
+              </button>
             </div>
 
             <div class="w-full h-px bg-zinc-100"></div>
@@ -876,7 +906,7 @@
             </ul>
 
             <a target="_blank" rel="noopener" href="https://app.whogoes.co/register" class="block">
-              <button class="w-full flex items-center justify-center px-6 h-12 text-base font-medium text-white bg-emerald-700 hover:bg-emerald-600 transition-all pill cursor-pointer active:scale-[0.98]">
+              <button class="w-full flex items-center justify-center px-6 h-12 text-base font-medium text-white bg-emerald-700 hover:bg-emerald-800 transition-all pill cursor-pointer active:scale-[0.98]">
                 Start Free with 20 Credits
               </button>
             </a>
@@ -895,7 +925,7 @@
     <section id="faq" class="w-full py-20">
       <div class="max-w-3xl mx-auto px-5">
         <div class="flex flex-col items-center text-center gap-5 mb-12">
-          <h2 class="text-3xl md:text-4xl tracking-tighter text-zinc-900 leading-tight font-medium">
+          <h2 class="text-3xl md:text-4xl tracking-tight text-zinc-900 leading-tight font-medium">
             Frequently asked questions
           </h2>
         </div>
@@ -963,12 +993,12 @@
     <!-- ==================== FOOTER CTA ==================== -->
     <section class="w-full py-24 bg-emerald-50/50">
       <div class="max-w-3xl mx-auto px-5 flex flex-col items-center text-center gap-6">
-        <h2 class="text-3xl md:text-4xl tracking-tighter text-zinc-900 leading-tight font-medium max-w-lg">
+        <h2 class="text-3xl md:text-4xl tracking-tight text-zinc-900 leading-tight font-medium max-w-lg">
           Your next event is coming. See who's already posted about going.
         </h2>
         <div class="flex flex-col sm:flex-row items-center gap-3">
           <a href="https://app.whogoes.co/register">
-            <button class="flex items-center justify-center px-8 h-12 text-base font-medium text-white bg-emerald-700 hover:bg-emerald-600 transition-all pill cursor-pointer active:scale-[0.98]">
+            <button class="flex items-center justify-center px-8 h-12 text-base font-medium text-white bg-emerald-700 hover:bg-emerald-800 transition-all pill cursor-pointer active:scale-[0.98]">
               Start Free with 20 Credits
             </button>
           </a>
@@ -1062,7 +1092,7 @@
           <label for="req-email" class="text-sm font-medium text-zinc-700">Email Address</label>
           <input id="req-email" type="email" required placeholder="john@company.com" class="h-10 px-3 rounded-lg border border-zinc-200 text-sm text-zinc-900 placeholder:text-zinc-500 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent">
         </div>
-        <button type="submit" class="mt-2 flex items-center justify-center h-11 text-sm font-medium text-white bg-emerald-700 hover:bg-emerald-600 transition-all pill cursor-pointer active:scale-[0.98]">
+        <button type="submit" class="mt-2 flex items-center justify-center h-11 text-sm font-medium text-white bg-emerald-700 hover:bg-emerald-800 transition-all pill cursor-pointer active:scale-[0.98]">
           Submit Request
         </button>
       </form>
@@ -1098,7 +1128,7 @@
           <label for="contact-message" class="text-sm font-medium text-zinc-700">Message</label>
           <textarea id="contact-message" required rows="4" placeholder="How can we help?" class="px-3 py-2 rounded-lg border border-zinc-200 text-sm text-zinc-900 placeholder:text-zinc-500 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent resize-none"></textarea>
         </div>
-        <button type="submit" id="contact-submit-btn" class="mt-2 flex items-center justify-center h-11 text-sm font-medium text-white bg-emerald-700 hover:bg-emerald-600 transition-all pill cursor-pointer active:scale-[0.98]">
+        <button type="submit" id="contact-submit-btn" class="mt-2 flex items-center justify-center h-11 text-sm font-medium text-white bg-emerald-700 hover:bg-emerald-800 transition-all pill cursor-pointer active:scale-[0.98]">
           Send Message
         </button>
       </form>
@@ -1110,7 +1140,7 @@
         <p class="text-sm text-zinc-500 text-center">We'll get back to you shortly.</p>
       </div>
       <div id="contact-error" class="hidden flex-col items-center gap-3 py-4">
-        <p class="text-sm text-red-500 text-center">Something went wrong. Please email us at hello@whogoes.co</p>
+        <p class="text-sm text-red-700 text-center">Something went wrong. Please email us at hello@whogoes.co</p>
       </div>
     </div>
   </div>
@@ -1269,6 +1299,19 @@
       }
       btn.textContent = 'Send Message';
       btn.disabled = false;
+    }
+
+    // ===== Pricing pack picker: updates the headline price and what the pack buys =====
+    function selectPack(btn) {
+      document.querySelectorAll('.pack').forEach((b) => b.setAttribute('aria-pressed', b === btn ? 'true' : 'false'));
+      const credits = Number(btn.dataset.credits);
+      const perEl = document.getElementById('price-per');
+      perEl.textContent = '$' + btn.dataset.per;
+      perEl.classList.remove('price-tick'); void perEl.offsetWidth; perEl.classList.add('price-tick');
+      document.getElementById('price-pack').textContent = '$' + btn.dataset.price + ' pack (' + credits.toLocaleString('en-US') + ' credits)';
+      document.getElementById('buys-unfiltered').textContent = credits.toLocaleString('en-US');
+      // A filtered unlock with its email revealed costs 2 credits
+      document.getElementById('buys-filtered').textContent = Math.floor(credits / 2).toLocaleString('en-US');
     }
 
     // ===== Product tabs (hero card) =====
