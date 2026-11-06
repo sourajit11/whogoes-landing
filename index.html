@@ -53,7 +53,7 @@
         "name": "How do credits work?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "There are two ways to unlock. Unlock without filters (the whole list or just a partial slice) at 1 credit per contact with every verified email included free, or filter to your ICP first: 1 credit unlocks each matching contact's identity, and revealing their verified work email is an optional +1 credit. You get 20 free credits on signup, and packs run from $29 for 200 credits up to $149 for 2,000. Credits never expire."
+          "text": "There are two ways to unlock. Take the whole list, or filter it by event role (exhibitors, sponsors, attendees) or speakers, and it is 1 credit per contact with the verified email included. Or filter to your ICP first (seniority, job function, industry, company size, country, company or job title): each matching contact with a verified work email costs 2 credits, and one without costs 1 credit, charged in one step. You get 20 free credits on signup, and packs run from $29 for 200 credits up to $149 for 2,000. Credits never expire."
         }
       },
       {
@@ -565,7 +565,7 @@
               </a>
               <div class="flex flex-col items-center gap-1 border-t border-zinc-100 py-4">
                 <span class="text-sm font-medium text-zinc-900">Real page, real contacts. Click to see it live</span>
-                <span class="text-xs text-zinc-500">From $0.075 per contact &middot; unfiltered unlocks include the email free &middot; 20 free credits on signup</span>
+                <span class="text-xs text-zinc-500">From $0.075 per contact &middot; verified emails included &middot; 20 free credits on signup</span>
               </div>
             </div>
 
@@ -818,20 +818,20 @@
               <p class="text-sm text-zinc-500 mt-1">with the <span id="price-pack" class="font-semibold text-zinc-900">$149 pack (2,000 credits)</span>. Pick a pack below.</p>
             </div>
 
-            <!-- Two ways to unlock: green = everything included, blue = filtered to your ICP -->
+            <!-- Two ways to unlock: green = whole list or role filter, blue = ICP filters -->
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
               <div class="rounded-lg px-4 py-3 bg-emerald-50/70 border border-emerald-100 text-left">
                 <span class="block text-sm font-semibold text-emerald-800">
-                  Unlock without filters
+                  Whole list, or filter by role
                 </span>
-                <p class="text-xs text-zinc-600 mt-1">1 credit per contact, the whole list or a slice, with every verified email included free.</p>
+                <p class="text-xs text-zinc-600 mt-1">1 credit per contact, verified email included. Works for the whole list, exhibitors, sponsors, attendees or speakers.</p>
                 <p class="text-xs font-medium text-emerald-800 mt-2">Up to <span id="buys-unfiltered" class="tabular-nums">2,000</span> contacts, emails included</p>
               </div>
               <div class="rounded-lg px-4 py-3 bg-blue-50/70 border border-blue-100 text-left">
                 <span class="block text-sm font-semibold text-blue-800">
                   Filter to your ICP
                 </span>
-                <p class="text-xs text-zinc-600 mt-1">1 credit per matching contact, +1 credit per email you reveal.</p>
+                <p class="text-xs text-zinc-600 mt-1">2 credits per contact with a verified email, 1 credit without. Charged in one step.</p>
                 <p class="text-xs font-medium text-blue-800 mt-2">Up to <span id="buys-filtered" class="tabular-nums">1,000</span> contacts with emails</p>
               </div>
             </div>
@@ -889,7 +889,7 @@
               </li>
               <li class="flex items-center gap-2">
                 <svg width="16" height="16" fill="none" viewBox="0 0 16 16" class="text-emerald-700 shrink-0"><path d="M4 8L7 11L12 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                <span class="text-sm text-zinc-600">Verified work emails (included on unfiltered unlocks, +1 credit when filtering)</span>
+                <span class="text-sm text-zinc-600">Verified work emails, included with every unlock (+1 credit each with ICP filters)</span>
               </li>
               <li class="flex items-center gap-2">
                 <svg width="16" height="16" fill="none" viewBox="0 0 16 16" class="text-emerald-700 shrink-0"><path d="M4 8L7 11L12 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -936,7 +936,7 @@
               How do credits work?
               <svg width="16" height="16" fill="none" viewBox="0 0 16 16" class="text-zinc-500 transition-transform group-open:rotate-45 shrink-0 ml-4"><path d="M8 3V13M3 8H13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
             </summary>
-            <p class="mt-3 text-sm text-zinc-500 leading-6">There are two ways to unlock. Unlock without filters (the whole list or just a partial slice) and it is 1 credit per contact with every verified email included free. Or filter to your ICP first: 1 credit unlocks each matching contact's identity (name, job title, company, LinkedIn profile and the source post), and revealing that contact's verified work email is an optional +1 credit, only on contacts that have one. You get 20 free credits on signup, and packs run from $29 for 200 credits up to $149 for 2,000. Credits never expire.</p>
+            <p class="mt-3 text-sm text-zinc-500 leading-6">There are two ways to unlock. Take the whole list, or filter it by event role (exhibitors, sponsors, attendees) or speakers, and it is 1 credit per contact with the verified email included. Or filter to your ICP first (seniority, job function, industry, company size, country, company or job title): each matching contact with a verified work email costs 2 credits, and one without costs 1 credit, charged in one step. You get 20 free credits on signup, and packs run from $29 for 200 credits up to $149 for 2,000. Credits never expire.</p>
           </details>
 
           <details class="group py-5">
@@ -1310,7 +1310,7 @@
       perEl.classList.remove('price-tick'); void perEl.offsetWidth; perEl.classList.add('price-tick');
       document.getElementById('price-pack').textContent = '$' + btn.dataset.price + ' pack (' + credits.toLocaleString('en-US') + ' credits)';
       document.getElementById('buys-unfiltered').textContent = credits.toLocaleString('en-US');
-      // A filtered unlock with its email revealed costs 2 credits
+      // An ICP-filtered contact with a verified email costs 2 credits
       document.getElementById('buys-filtered').textContent = Math.floor(credits / 2).toLocaleString('en-US');
     }
 
