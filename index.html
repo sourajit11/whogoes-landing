@@ -357,9 +357,38 @@
       to   { opacity: 1; transform: translateY(0); }
     }
     .animate-fade-in-up { animation: fadeInUp 0.6s ease-out forwards; }
+
+    /* Black Friday 2026 sale. Hidden unless the script below adds html.bf-on,
+       which it only does before the sale ends, so nothing needs removing on time. */
+    .bf-only { display: none !important; }
+    html.bf-on .bf-only { display: flex !important; }
+    html.bf-on .bf-inline { display: inline-flex !important; }
+    .bf-ribbon { align-items: center; justify-content: center; gap: 0.5rem; flex-wrap: wrap; text-align: center;
+      background: #09090b; color: #fff; border-radius: 0.75rem; padding: 0.75rem 1rem; font-size: 0.875rem; }
+    .bf-tag { background: #fbbf24; color: #451a03; font-weight: 700; font-size: 0.7rem; letter-spacing: 0.04em;
+      text-transform: uppercase; border-radius: 9999px; padding: 0.15rem 0.55rem; }
+    .bf-hl { color: #fcd34d; font-weight: 600; }
+    .bf-was { color: #a1a1aa; text-decoration: line-through; font-weight: 500; }
+    .bf-badge { white-space: nowrap; background: #fef3c7; color: #92400e; box-shadow: inset 0 0 0 1px #fde68a; font-size: 11px; font-weight: 600;
+      border-radius: 9999px; padding: 0.125rem 0.375rem; }
+    .bf-float { position: fixed; left: 50%; bottom: 1.25rem; transform: translateX(-50%); z-index: 60;
+      align-items: center; gap: 0.6rem; white-space: nowrap; background: #09090b; color: #fff; font-size: 0.875rem;
+      border-radius: 9999px; padding: 0.5rem 0.5rem 0.5rem 0.9rem; box-shadow: 0 10px 30px rgba(0,0,0,0.25); }
+    .bf-float a { background: #fbbf24; color: #451a03; font-weight: 600; border-radius: 9999px; padding: 0.35rem 0.8rem; }
+    .bf-float a:hover { background: #fcd34d; }
+    .bf-float button { color: #d4d4d8; padding: 0 0.35rem; cursor: pointer; font-size: 1rem; line-height: 1; }
+    @media (max-width: 480px) { .bf-float { font-size: 0.8rem; } .bf-float .bf-float-long { display: none; } }
   </style>
 </head>
 <body class="flex flex-col min-h-screen w-full overflow-x-hidden">
+
+  <!-- Black Friday floating pill (shown only while the sale runs) -->
+  <div id="bf-float" class="bf-only bf-float" role="region" aria-label="Black Friday sale">
+    <span class="bf-tag">Black Friday</span>
+    <span>Pro pack 50% off<span class="bf-float-long"> until Cyber Monday</span></span>
+    <a href="#pricing">See deal</a>
+    <button type="button" aria-label="Dismiss" onclick="document.getElementById('bf-float').remove()">&times;</button>
+  </div>
 
   <!-- ==================== HEADER (Desktop) ==================== -->
   <header class="fixed top-8 left-1/2 -translate-x-1/2 z-50 w-[640px] bg-white/80 backdrop-blur-xl pill overflow-hidden shadow-lg hidden md:block" style="border: 1px solid rgba(0,0,0,0.08);">
@@ -808,6 +837,15 @@
           </div>
         </div>
 
+        <!-- Black Friday ribbon (shown only while the sale runs) -->
+        <div class="max-w-md mx-auto mb-4">
+          <div class="bf-only bf-ribbon">
+            <span class="bf-tag">Black Friday</span>
+            <span><span class="bf-hl">Pro pack 50% off:</span> 2,000 credits for $74.50 <span class="bf-was">$149</span></span>
+            <span class="text-xs text-zinc-300">Ends Cyber Monday (Nov 30), midnight Pacific</span>
+          </div>
+        </div>
+
         <!-- Single pricing card -->
         <div class="max-w-md mx-auto">
           <div class="pricing-card rounded-2xl p-8 flex flex-col gap-6 border border-zinc-200 shadow-sm">
@@ -861,13 +899,13 @@
                   <span class="flex items-center gap-1.5 text-xs text-zinc-500">$0.105 / credit <span class="text-[11px] font-semibold px-1.5 py-0.5 rounded-full bg-amber-50 text-amber-800 ring-1 ring-amber-200">Save 28%</span></span>
                 </span>
               </button>
-              <button type="button" class="pack" data-price="149" data-credits="2000" data-per="0.075" aria-pressed="true" onclick="selectPack(this)">
+              <button type="button" id="pack-pro" class="pack" data-price="149" data-credits="2000" data-per="0.075" aria-pressed="true" onclick="selectPack(this)">
                 <span class="flex items-center gap-2">
-                  <span class="pack-price text-sm font-semibold text-zinc-900">$149</span><span class="text-xs font-medium text-emerald-700">Best value</span>
+                  <span class="pack-price text-sm font-semibold text-zinc-900">$149</span><span class="bf-inline bf-was text-sm" style="display:none">$149</span><span class="bf-inline bf-badge" style="display:none">50% off</span><span class="bf-hide text-xs font-medium text-emerald-700">Best value</span>
                 </span>
                 <span class="flex flex-col items-end gap-0.5">
                   <span class="text-sm font-semibold text-zinc-900">2,000 credits</span>
-                  <span class="flex items-center gap-1.5 text-xs text-zinc-500">$0.075 / credit <span class="text-[11px] font-semibold px-1.5 py-0.5 rounded-full bg-amber-50 text-amber-800 ring-1 ring-amber-200">Save 48%</span></span>
+                  <span class="flex items-center gap-1.5 text-xs text-zinc-500"><span id="pro-per">$0.075 / credit</span> <span id="pro-save" class="text-[11px] font-semibold px-1.5 py-0.5 rounded-full bg-amber-50 text-amber-800 ring-1 ring-amber-200">Save 48%</span></span>
                 </span>
               </button>
             </div>
@@ -1301,6 +1339,24 @@
       btn.textContent = 'Send Message';
       btn.disabled = false;
     }
+
+    // ===== Black Friday 2026: Pro pack 50% off until Cyber Monday 23:59 Pacific =====
+    // Must match BF2026 in the app (src/lib/promo.ts). The app charges the real price.
+    (function applyBlackFriday() {
+      const SALE_END = Date.parse('2026-12-01T07:59:59Z');
+      if (Date.now() > SALE_END) return;
+      document.documentElement.classList.add('bf-on');
+      const pro = document.getElementById('pack-pro');
+      if (!pro) return;
+      pro.dataset.price = '74.50';
+      pro.dataset.per = '0.037';
+      pro.querySelector('.pack-price').textContent = '$74.50';
+      document.getElementById('pro-per').textContent = '$0.037 / credit';
+      document.getElementById('pro-save').textContent = 'Save 74%';
+      const best = pro.querySelector('.bf-hide');
+      if (best) best.remove();
+      if (pro.getAttribute('aria-pressed') === 'true') selectPack(pro);
+    })();
 
     // ===== Pricing pack picker: updates the headline price and what the pack buys =====
     function selectPack(btn) {
